@@ -98,15 +98,24 @@ namespace HealthWatcher.ViewModel
         #region meth
         private void LoginAccess()
         {
+            Model.User currentUser = new Model.User();
             View.Patients patientsWindow = new HealthWatcher.View.Patients();
             View.Users usersWindow = new HealthWatcher.View.Users();
+            ViewModel.PatientsViewModel pmv = new ViewModel.PatientsViewModel();
+            ViewModel.UsersViewModel umv = new ViewModel.UsersViewModel();
+
+            Model.Register reg = Model.Register.getInstance();
+            reg.CurrentUser = currentUser;
+            reg.Pvm = pmv;
+            reg.Uvm = umv;
 
             patientsWindow.Left = 0;
             patientsWindow.Top = 0;
-            usersWindow.Left = 610;
+            usersWindow.Left = 600;
             usersWindow.Top = 0;
 
-
+            patientsWindow.DataContext = pmv;
+            usersWindow.DataContext = umv;
             patientsWindow.Show();
             usersWindow.Show();
             CloseSignal = true;

@@ -8,6 +8,7 @@ namespace HealthWatcher.ViewModel
     class UsersViewModel : BaseViewModel
     {
         #region attr
+        private Model.User _currentUser;
         private List<Model.User> _users;
         private Model.User _selectUser;
         #endregion
@@ -22,12 +23,19 @@ namespace HealthWatcher.ViewModel
             get { return _selectUser; }
             set { _selectUser = value; }
         }
+        public Model.User CurrentUser
+        {
+            get { return _currentUser; }
+            set { _currentUser = value; }
+        }
         #endregion
 
         #region ctor
         public UsersViewModel()
         {
-
+            CurrentUser = Model.Register.getInstance().CurrentUser;
+            DataAccess.AccessUser au = new DataAccess.AccessUser();
+            //Users = au.GetListUser();
         }
         #endregion
     }
