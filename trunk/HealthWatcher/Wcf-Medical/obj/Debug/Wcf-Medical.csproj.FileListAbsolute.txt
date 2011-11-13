@@ -34,3 +34,21 @@ C:\Documents and Settings\Vic.VIC-C6BC88711E7\Mes documents\PROJET\HealthWatcher
 C:\Documents and Settings\Vic.VIC-C6BC88711E7\Mes documents\PROJET\HealthWatcher\Wcf-Medical\obj\Debug\ResolveAssemblyReference.cache
 C:\Documents and Settings\Vic.VIC-C6BC88711E7\Mes documents\PROJET\HealthWatcher\Wcf-Medical\obj\Debug\Wcf-Medical.dll
 C:\Documents and Settings\Vic.VIC-C6BC88711E7\Mes documents\PROJET\HealthWatcher\Wcf-Medical\obj\Debug\Wcf-Medical.pdb
+E:\PROJET\WPF\healthwatcher\HealthWatcher\Wcf-Medical\bin\Wcf-Medical.dll
+E:\PROJET\WPF\healthwatcher\HealthWatcher\Wcf-Medical\bin\Wcf-Medical.pdb
+E:\PROJET\WPF\healthwatcher\HealthWatcher\Wcf-Medical\bin\Dbo.dll
+E:\PROJET\WPF\healthwatcher\HealthWatcher\Wcf-Medical\bin\Interfaces.dll
+E:\PROJET\WPF\healthwatcher\HealthWatcher\Wcf-Medical\bin\Dbo.pdb
+E:\PROJET\WPF\healthwatcher\HealthWatcher\Wcf-Medical\bin\Interfaces.pdb
+E:\PROJET\WPF\healthwatcher\HealthWatcher\Wcf-Medical\obj\Debug\ResolveAssemblyReference.cache
+E:\PROJET\WPF\healthwatcher\HealthWatcher\Wcf-Medical\obj\Debug\Wcf-Medical.dll
+E:\PROJET\WPF\healthwatcher\HealthWatcher\Wcf-Medical\obj\Debug\Wcf-Medical.pdb
+E:\PROJET\healthwatcher\HealthWatcher\Wcf-Medical\bin\Wcf-Medical.dll
+E:\PROJET\healthwatcher\HealthWatcher\Wcf-Medical\bin\Wcf-Medical.pdb
+E:\PROJET\healthwatcher\HealthWatcher\Wcf-Medical\bin\Dbo.dll
+E:\PROJET\healthwatcher\HealthWatcher\Wcf-Medical\bin\Interfaces.dll
+E:\PROJET\healthwatcher\HealthWatcher\Wcf-Medical\bin\Dbo.pdb
+E:\PROJET\healthwatcher\HealthWatcher\Wcf-Medical\bin\Interfaces.pdb
+E:\PROJET\healthwatcher\HealthWatcher\Wcf-Medical\obj\Debug\ResolveAssemblyReference.cache
+E:\PROJET\healthwatcher\HealthWatcher\Wcf-Medical\obj\Debug\Wcf-Medical.dll
+E:\PROJET\healthwatcher\HealthWatcher\Wcf-Medical\obj\Debug\Wcf-Medical.pdb

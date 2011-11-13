@@ -35,7 +35,7 @@ namespace HealthWatcher.ViewModel
         {
             CurrentUser = Model.Register.getInstance().CurrentUser;
             DataAccess.AccessUser au = new DataAccess.AccessUser();
-            //Users = au.GetListUser();
+            Users = au.GetListUser();
         }
         #endregion
     }

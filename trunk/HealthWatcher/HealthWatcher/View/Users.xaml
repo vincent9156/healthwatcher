@@ -41,13 +41,6 @@
         <Button Content="-" Height="32" HorizontalAlignment="Left" Name="Remove" VerticalAlignment="Top" Width="89" FontSize="20" Grid.Column="2" Grid.Row="7" />
         <dg:DataGrid Name="userDataGrid" ItemsSource="{Binding Users}" Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="2">
             <dg:DataGrid.Columns>
-                <dg:DataGridTemplateColumn Header="Picture" IsReadOnly="True">
-                    <dg:DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Image Source="{Binding Picture}" />
-                        </DataTemplate>
-                    </dg:DataGridTemplateColumn.CellTemplate>
-                </dg:DataGridTemplateColumn>
                 <dg:DataGridTextColumn Header="Login" Binding="{Binding Login}"/>
                 <dg:DataGridTextColumn Header="Role" Binding="{Binding Role}"/>
                 <dg:DataGridTemplateColumn Header="Status" IsReadOnly="True">

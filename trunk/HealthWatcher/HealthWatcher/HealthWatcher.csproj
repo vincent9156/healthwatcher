@@ -190,16 +190,16 @@
     <WCFMetadataStorage Include="Service References\ServRefUser\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ServRefObservation\ServiceObservation.disco" />
+    <None Include="Service References\ServRefUser\ServiceUser.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ServRefObservation\configuration91.svcinfo" />
+    <None Include="Service References\ServRefUser\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ServRefObservation\configuration.svcinfo" />
+    <None Include="Service References\ServRefUser\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ServRefObservation\Reference.svcmap">
+    <None Include="Service References\ServRefUser\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -220,16 +220,16 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ServRefUser\ServiceUser.disco" />
+    <None Include="Service References\ServRefObservation\ServiceObservation.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ServRefUser\configuration91.svcinfo" />
+    <None Include="Service References\ServRefObservation\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ServRefUser\configuration.svcinfo" />
+    <None Include="Service References\ServRefObservation\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ServRefUser\Reference.svcmap">
+    <None Include="Service References\ServRefObservation\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
