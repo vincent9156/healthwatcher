@@ -52,3 +52,12 @@ E:\PROJET\WPF\healthwatcher\HealthWatcher\Data\bin\Debug\Interfaces.pdb
 E:\PROJET\WPF\healthwatcher\HealthWatcher\Data\obj\Debug\ResolveAssemblyReference.cache
 E:\PROJET\WPF\healthwatcher\HealthWatcher\Data\obj\Debug\Data.dll
 E:\PROJET\WPF\healthwatcher\HealthWatcher\Data\obj\Debug\Data.pdb
+E:\healthwatcher\HealthWatcher\Data\bin\Debug\Data.dll
+E:\healthwatcher\HealthWatcher\Data\bin\Debug\Data.pdb
+E:\healthwatcher\HealthWatcher\Data\bin\Debug\Dbo.dll
+E:\healthwatcher\HealthWatcher\Data\bin\Debug\Interfaces.dll
+E:\healthwatcher\HealthWatcher\Data\bin\Debug\Dbo.pdb
+E:\healthwatcher\HealthWatcher\Data\bin\Debug\Interfaces.pdb
+E:\healthwatcher\HealthWatcher\Data\obj\Debug\ResolveAssemblyReference.cache
+E:\healthwatcher\HealthWatcher\Data\obj\Debug\Data.dll
+E:\healthwatcher\HealthWatcher\Data\obj\Debug\Data.pdb

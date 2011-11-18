@@ -40,3 +40,10 @@ E:\PROJET\WPF\healthwatcher\HealthWatcher\Interfaces\bin\Debug\Dbo.pdb
 E:\PROJET\WPF\healthwatcher\HealthWatcher\Interfaces\obj\Debug\ResolveAssemblyReference.cache
 E:\PROJET\WPF\healthwatcher\HealthWatcher\Interfaces\obj\Debug\Interfaces.dll
 E:\PROJET\WPF\healthwatcher\HealthWatcher\Interfaces\obj\Debug\Interfaces.pdb
+E:\healthwatcher\HealthWatcher\Interfaces\bin\Debug\Interfaces.dll
+E:\healthwatcher\HealthWatcher\Interfaces\bin\Debug\Interfaces.pdb
+E:\healthwatcher\HealthWatcher\Interfaces\bin\Debug\Dbo.dll
+E:\healthwatcher\HealthWatcher\Interfaces\bin\Debug\Dbo.pdb
+E:\healthwatcher\HealthWatcher\Interfaces\obj\Debug\ResolveAssemblyReference.cache
+E:\healthwatcher\HealthWatcher\Interfaces\obj\Debug\Interfaces.dll
+E:\healthwatcher\HealthWatcher\Interfaces\obj\Debug\Interfaces.pdb

@@ -52,3 +52,12 @@ E:\PROJET\healthwatcher\HealthWatcher\Wcf-Medical\bin\Interfaces.pdb
 E:\PROJET\healthwatcher\HealthWatcher\Wcf-Medical\obj\Debug\ResolveAssemblyReference.cache
 E:\PROJET\healthwatcher\HealthWatcher\Wcf-Medical\obj\Debug\Wcf-Medical.dll
 E:\PROJET\healthwatcher\HealthWatcher\Wcf-Medical\obj\Debug\Wcf-Medical.pdb
+E:\healthwatcher\HealthWatcher\Wcf-Medical\bin\Wcf-Medical.dll
+E:\healthwatcher\HealthWatcher\Wcf-Medical\bin\Wcf-Medical.pdb
+E:\healthwatcher\HealthWatcher\Wcf-Medical\bin\Dbo.dll
+E:\healthwatcher\HealthWatcher\Wcf-Medical\bin\Interfaces.dll
+E:\healthwatcher\HealthWatcher\Wcf-Medical\bin\Dbo.pdb
+E:\healthwatcher\HealthWatcher\Wcf-Medical\bin\Interfaces.pdb
+E:\healthwatcher\HealthWatcher\Wcf-Medical\obj\Debug\ResolveAssemblyReference.cache
+E:\healthwatcher\HealthWatcher\Wcf-Medical\obj\Debug\Wcf-Medical.dll
+E:\healthwatcher\HealthWatcher\Wcf-Medical\obj\Debug\Wcf-Medical.pdb

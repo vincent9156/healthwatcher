@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Input;
+using System.Windows.Forms;
 
 namespace HealthWatcher.ViewModel
 {
@@ -13,7 +14,7 @@ namespace HealthWatcher.ViewModel
         private bool _closeSignal;
         private string _login;
         private string _password;
-        private String _loginFail;
+        private string _loginFail;
         #endregion
 
         #region commandes
@@ -50,11 +51,10 @@ namespace HealthWatcher.ViewModel
                     _login = value;
                     OnPropertyChanged("Login");
                 }
-
             }
         }
 
-        public String LoginFail
+        public string LoginFail
         {
             get { return _loginFail; }
             set { _loginFail = value; }
@@ -90,11 +90,13 @@ namespace HealthWatcher.ViewModel
         #region ctor
         public LoginViewModel()
         {
+            // init position
+
             //init variables
             base.DisplayName = "Page de login";
             Login = "";
             Password = "";
-            LoginFail = "Hidden";
+            LoginFail = "";
 
             _dataAccessUser = new HealthWatcher.DataAccess.AccessUser();
 
@@ -118,10 +120,11 @@ namespace HealthWatcher.ViewModel
                     ViewModel.UsersViewModel umv = new ViewModel.UsersViewModel(currentUser);
                     ViewModel.PatientsViewModel pmv = new ViewModel.PatientsViewModel(currentUser, umv);
 
-                    patientsWindow.Left = 0;
-                    patientsWindow.Top = 0;
-                    usersWindow.Left = 600;
-                    usersWindow.Top = 0;
+                    
+                    patientsWindow.Left = (Screen.PrimaryScreen.Bounds.Width * 72 / 96)/2 - 400;
+                    patientsWindow.Top = (Screen.PrimaryScreen.Bounds.Height * 72 / 96)/2 - 300;
+                    usersWindow.Left = (Screen.PrimaryScreen.Bounds.Width/2 * 72 / 96) + 200;
+                    usersWindow.Top = (Screen.PrimaryScreen.Bounds.Height/2 * 72 / 96) - 300;
 
                     usersWindow.DataContext = umv;
                     patientsWindow.DataContext = pmv;
@@ -131,11 +134,12 @@ namespace HealthWatcher.ViewModel
                 }
                 else
                 {
+                    LoginFail = "Wrong Password";
                 }
             }
             else
             {
-                LoginFail = "Visible";
+                LoginFail = "Wrong Login";
             }
         }
         #endregion
