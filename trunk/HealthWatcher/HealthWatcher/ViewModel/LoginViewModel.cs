@@ -112,22 +112,19 @@ namespace HealthWatcher.ViewModel
             {
                 if (Password != "" && (Password == currentUser.Pwd))
                 {
-                    View.Patients patientsWindow = new HealthWatcher.View.Patients();
                     View.Users usersWindow = new HealthWatcher.View.Users();
-                    ViewModel.PatientsViewModel pmv = new ViewModel.PatientsViewModel();
-                    ViewModel.UsersViewModel umv = new ViewModel.UsersViewModel();
-                    Model.Register reg = Model.Register.getInstance();
-                    reg.CurrentUser = currentUser;
-                    reg.Pvm = pmv;
-                    reg.Uvm = umv;
+                    View.Patients patientsWindow = new HealthWatcher.View.Patients();
+                    
+                    ViewModel.UsersViewModel umv = new ViewModel.UsersViewModel(currentUser);
+                    ViewModel.PatientsViewModel pmv = new ViewModel.PatientsViewModel(currentUser, umv);
 
                     patientsWindow.Left = 0;
                     patientsWindow.Top = 0;
                     usersWindow.Left = 600;
                     usersWindow.Top = 0;
 
-                    patientsWindow.DataContext = pmv;
                     usersWindow.DataContext = umv;
+                    patientsWindow.DataContext = pmv;
                     patientsWindow.Show();
                     usersWindow.Show();
                     CloseSignal = true;

@@ -32,11 +32,11 @@ namespace HealthWatcher.ViewModel
         #endregion
 
         #region ctor
-        public UsersViewModel()
+        public UsersViewModel(Model.User currentUser)
         {
-            CurrentUser = Model.Register.getInstance().CurrentUser;
             DataAccess.AccessUser au = new DataAccess.AccessUser();
             Users = au.GetListUser();
+            CurrentUser = currentUser;
         }
         #endregion
     }

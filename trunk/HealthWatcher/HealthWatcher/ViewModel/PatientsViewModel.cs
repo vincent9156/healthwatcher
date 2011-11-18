@@ -9,6 +9,7 @@ namespace HealthWatcher.ViewModel
     {
         #region attr
         private Model.User _currentUser;
+        private ViewModel.UsersViewModel _uvm;
         private List<Model.Patient> _patients;
         private Model.Patient _selectPatient;
         private Model.Observation _selectObservation;
@@ -35,16 +36,22 @@ namespace HealthWatcher.ViewModel
             get { return _currentUser; }
             set { _currentUser = value; }
         }
+        public ViewModel.UsersViewModel Uvm
+        {
+            get { return _uvm; }
+            set { _uvm = value; }
+        }
         #endregion
 
         #region ctor
-        public PatientsViewModel()
+        public PatientsViewModel(Model.User currentUser, ViewModel.UsersViewModel uvm)
         {
             DataAccess.AccessPatient ap = new DataAccess.AccessPatient();
             Patients = ap.GetListPatient();
-            SelectPatient = null;
-            SelectObservation = null;
-            CurrentUser = null;
+            SelectPatient = Patients[0];
+            SelectObservation = Patients[0].Observations[0];
+            CurrentUser = currentUser;
+            Uvm = uvm;
         }
         #endregion
     }
