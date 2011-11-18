@@ -13,6 +13,7 @@ namespace HealthWatcher.ViewModel
         private Model.Patient _selectPatient;
         private Model.Observation _selectObservation;
         #endregion
+
         #region get/set
         public List<Model.Patient> Patients
         {
@@ -39,6 +40,8 @@ namespace HealthWatcher.ViewModel
         #region ctor
         public PatientsViewModel()
         {
+            DataAccess.AccessPatient ap = new DataAccess.AccessPatient();
+            Patients = ap.GetListPatient();
             SelectPatient = null;
             SelectObservation = null;
             CurrentUser = null;

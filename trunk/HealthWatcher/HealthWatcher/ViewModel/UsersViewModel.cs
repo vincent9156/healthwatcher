@@ -12,6 +12,7 @@ namespace HealthWatcher.ViewModel
         private List<Model.User> _users;
         private Model.User _selectUser;
         #endregion
+
         #region get/set
         public List<Model.User> Users
         {

@@ -66,14 +66,18 @@ namespace HealthWatcher.DataAccess
             {
                 newList.Add(convertUser(user));
             }
-            Suc.GetListUser();
 
-            return newList; 
+            return newList;
         }
 
         public Model.User GetUser(string login)
         {
-            return convertUser(Suc.GetUser(login));
+            foreach (Model.User user in GetListUser())
+            {
+                if (user.Login == login)
+                    return user;
+            }
+            return null;
         }
 
         public bool AddUser(Model.User user)

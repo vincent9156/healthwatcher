@@ -44,11 +44,11 @@
         <Label Content="Patients" Height="32" HorizontalAlignment="Left" Name="PatientsLabel" VerticalAlignment="Top" Width="178" FontSize="20" HorizontalContentAlignment="Center" />
         <Button Content="+" Height="32" HorizontalAlignment="Left" Name="Add" VerticalAlignment="Top" Width="89" FontSize="20" Grid.Row="2" />
         <Button Content="-" Height="32" HorizontalAlignment="Right" Name="Remove" VerticalAlignment="Top" Width="89" FontSize="20" Grid.Row="2" />
-        <dg:DataGrid Grid.Row="3" Grid.RowSpan="7" ItemsSource="{Binding Patients}" SelectedItem="{Binding SelectPatient, Mode=TwoWay}">
+        <dg:DataGrid Grid.Row="3" Grid.RowSpan="7" ItemsSource="{Binding Patients}" SelectedItem="{Binding SelectPatient}" SelectionChanged="DataGrid_SelectionChanged">
             <dg:DataGrid.Columns>
-                <dg:DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
-                <dg:DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
-                <dg:DataGridTextColumn Header="Firstname" Binding="{Binding Firstname}"/>
+                <dg:DataGridTextColumn IsReadOnly="True" Header="ID" Binding="{Binding Id}"/>
+                <dg:DataGridTextColumn IsReadOnly="True" Header="Name" Binding="{Binding Name}"/>
+                <dg:DataGridTextColumn IsReadOnly="True" Header="Firstname" Binding="{Binding Firstname}"/>
             </dg:DataGrid.Columns>
         </dg:DataGrid>
         <Label Content="Observations" Grid.Column="2" Height="32" HorizontalAlignment="Left" Name="ObservationLabel" VerticalAlignment="Top" Width="380" FontSize="20" HorizontalContentAlignment="Center" Grid.ColumnSpan="5" />
@@ -57,7 +57,7 @@
         <ListBox Grid.Column="2" Grid.Row="3" Height="487" HorizontalAlignment="Left" Name="ObservationList" VerticalAlignment="Top" Width="99" Grid.RowSpan="7" ItemsSource="{Binding SelectPatient.Observations}" ItemTemplate="{StaticResource dtObservationList}" SelectedItem="{Binding SelectObservation}"/>
         <Image Grid.Column="3" Grid.Row="2" Grid.RowSpan="2" Height="64" HorizontalAlignment="Left" Name="BloodPressureGraph" Stretch="Fill" VerticalAlignment="Top" Width="129" Grid.ColumnSpan="2" Margin="10,0,0,0" />
         <Image Grid.Column="6" Grid.Row="2" Grid.RowSpan="2" Height="64" HorizontalAlignment="Left" Name="WeightGraph" Stretch="Fill" VerticalAlignment="Top" Width="130" />
-        <ListBox Grid.Column="3" Grid.Row="5" Height="64" HorizontalAlignment="Left" Name="PictureList" VerticalAlignment="Top" Width="270" Grid.ColumnSpan="4" Margin="10,0,0,0" ItemsSource="{Binding SelectObservation.Pictures}"/>
+        <ListBox Grid.Column="3" Grid.Row="5" Height="64" HorizontalAlignment="Left" Name="PictureList" VerticalAlignment="Top" Width="270" Grid.ColumnSpan="4" Margin="10,1,0,0" ItemsSource="{Binding SelectObservation.Pictures}" Grid.RowSpan="2" />
         <Label Content="Blood Pressure :" Grid.Column="3" Grid.Row="7" Height="30" HorizontalAlignment="Left" Margin="11,0,0,0" Name="BloodPressureLabel" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="129" />
         <TextBlock Grid.Column="5" Grid.Row="7" Height="30" HorizontalAlignment="Left" Name="BloodPressureTextBlock" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="141" Text="{Binding SelectObservation.BloodPressure}" />
         <Label Content="Weight :" Grid.Column="4" Grid.Row="8" Height="30" HorizontalAlignment="Left" Margin="1,0,0,0" Name="WeightLabel" VerticalAlignment="Top" Width="127" />

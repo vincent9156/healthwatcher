@@ -80,6 +80,7 @@ namespace HealthWatcher.DataAccess
             newPat.Birthday = pat.Birthday;
             newPat.Firstname = pat.Firstname;
             newPat.Name = pat.Name;
+            newPat.Observations = new List<Model.Observation>();
             foreach (ServRefPatient.Observation observ in pat.Observations)
             {
                 newPat.Observations.Add(convertObs(observ));

@@ -11,20 +11,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace HealthWatcher.View
+namespace HealthWatcher.View.Add
 {
     /// <summary>
-    /// Interaction logic for Patients.xaml
+    /// Interaction logic for AddObservation.xaml
     /// </summary>
-    public partial class Patients : Window
+    public partial class AddObservation : Window
     {
-        public Patients()
+        public AddObservation()
         {
             InitializeComponent();
-        }
-
-        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
         }
     }
 }

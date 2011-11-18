@@ -32,7 +32,7 @@
             <ColumnDefinition Width="89*" />
         </Grid.ColumnDefinitions>
         <Label Content="Users" Height="32" HorizontalAlignment="Left" Name="label1" VerticalAlignment="Top" Width="178" FontSize="20" HorizontalContentAlignment="Center" Grid.Column="1" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
-        <Image Grid.Column="1" Grid.Row="3" Height="89" HorizontalAlignment="Left" Name="imageUser" Stretch="Fill" VerticalAlignment="Top" Width="89" Grid.RowSpan="3" Source="{Binding CurrentUser.Picture}"/>
+        <!--<Image Grid.Column="1" Grid.Row="3" Height="89" HorizontalAlignment="Left" Name="imageUser" Stretch="Fill" VerticalAlignment="Top" Width="89" Grid.RowSpan="3" Source="{Binding CurrentUser.Picture}" />-->
         <TextBlock Grid.Column="1" Grid.Row="2" Height="28" HorizontalAlignment="Left" Name="textBlockLogin" VerticalAlignment="Top" Width="89" Text="{Binding CurrentUser.Login}"/>
         <TextBlock Grid.Column="2" Grid.Row="3" Height="27" HorizontalAlignment="Left" Name="textBlockName" VerticalAlignment="Top" Width="89" Text="{Binding CurrentUser.Name}"/>
         <TextBlock Grid.Column="2" Grid.Row="4" Height="28" HorizontalAlignment="Left" Name="textBlockFirstName" VerticalAlignment="Top" Width="89" Text="{Binding CurrentUser.Firstname}"/>
@@ -41,8 +41,8 @@
         <Button Content="-" Height="32" HorizontalAlignment="Left" Name="Remove" VerticalAlignment="Top" Width="89" FontSize="20" Grid.Column="2" Grid.Row="7" />
         <dg:DataGrid Name="userDataGrid" ItemsSource="{Binding Users}" Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="2">
             <dg:DataGrid.Columns>
-                <dg:DataGridTextColumn Header="Login" Binding="{Binding Login}"/>
-                <dg:DataGridTextColumn Header="Role" Binding="{Binding Role}"/>
+                <dg:DataGridTextColumn IsReadOnly="True" Header="Login" Binding="{Binding Login}"/>
+                <dg:DataGridTextColumn IsReadOnly="True" Header="Role" Binding="{Binding Role}"/>
                 <dg:DataGridTemplateColumn Header="Status" IsReadOnly="True">
                     <dg:DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

@@ -13,6 +13,7 @@ namespace HealthWatcher.ViewModel
         private bool _closeSignal;
         private string _login;
         private string _password;
+        private String _loginFail;
         #endregion
 
         #region commandes
@@ -53,6 +54,12 @@ namespace HealthWatcher.ViewModel
             }
         }
 
+        public String LoginFail
+        {
+            get { return _loginFail; }
+            set { _loginFail = value; }
+        }
+
         /// <summary>
         /// indique si on doit fermer la fenêtre ou non
         /// </summary>
@@ -87,6 +94,7 @@ namespace HealthWatcher.ViewModel
             base.DisplayName = "Page de login";
             Login = "";
             Password = "";
+            LoginFail = "Hidden";
 
             _dataAccessUser = new HealthWatcher.DataAccess.AccessUser();
 
@@ -98,27 +106,40 @@ namespace HealthWatcher.ViewModel
         #region meth
         private void LoginAccess()
         {
+            DataAccess.AccessUser au = new DataAccess.AccessUser();
             Model.User currentUser = new Model.User();
-            View.Patients patientsWindow = new HealthWatcher.View.Patients();
-            View.Users usersWindow = new HealthWatcher.View.Users();
-            ViewModel.PatientsViewModel pmv = new ViewModel.PatientsViewModel();
-            ViewModel.UsersViewModel umv = new ViewModel.UsersViewModel();
+            if (Login != "" && ((currentUser = au.GetUser(Login)) != null))
+            {
+                if (Password != "" && (Password == currentUser.Pwd))
+                {
+                    View.Patients patientsWindow = new HealthWatcher.View.Patients();
+                    View.Users usersWindow = new HealthWatcher.View.Users();
+                    ViewModel.PatientsViewModel pmv = new ViewModel.PatientsViewModel();
+                    ViewModel.UsersViewModel umv = new ViewModel.UsersViewModel();
+                    Model.Register reg = Model.Register.getInstance();
+                    reg.CurrentUser = currentUser;
+                    reg.Pvm = pmv;
+                    reg.Uvm = umv;
 
-            Model.Register reg = Model.Register.getInstance();
-            reg.CurrentUser = currentUser;
-            reg.Pvm = pmv;
-            reg.Uvm = umv;
+                    patientsWindow.Left = 0;
+                    patientsWindow.Top = 0;
+                    usersWindow.Left = 600;
+                    usersWindow.Top = 0;
 
-            patientsWindow.Left = 0;
-            patientsWindow.Top = 0;
-            usersWindow.Left = 600;
-            usersWindow.Top = 0;
-
-            patientsWindow.DataContext = pmv;
-            usersWindow.DataContext = umv;
-            patientsWindow.Show();
-            usersWindow.Show();
-            CloseSignal = true;
+                    patientsWindow.DataContext = pmv;
+                    usersWindow.DataContext = umv;
+                    patientsWindow.Show();
+                    usersWindow.Show();
+                    CloseSignal = true;
+                }
+                else
+                {
+                }
+            }
+            else
+            {
+                LoginFail = "Visible";
+            }
         }
         #endregion
     }

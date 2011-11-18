@@ -11,7 +11,7 @@ namespace HealthWatcher.Model
         private User _currentUser;
         private ViewModel.PatientsViewModel _pvm;
         private ViewModel.UsersViewModel _uvm;
-        public static Register _instance;
+        public static Register _instance = null;
         #endregion
 
         #region get/set
@@ -40,7 +40,7 @@ namespace HealthWatcher.Model
         }
         #endregion
 
-        #region
+        #region meth
         public static Register getInstance()
         {
             if (_instance == null)
