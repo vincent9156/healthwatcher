@@ -44,7 +44,7 @@
         <Label Content="Patients" Height="32" HorizontalAlignment="Left" Name="PatientsLabel" VerticalAlignment="Top" Width="178" FontSize="20" HorizontalContentAlignment="Center" />
         <Button Content="+" Height="32" HorizontalAlignment="Left" Name="Add" VerticalAlignment="Top" Width="89" FontSize="20" Grid.Row="2" Command="{Binding AddPatientCommand}" IsEnabled="{Binding UserRight}"/>
         <Button Content="-" Height="32" HorizontalAlignment="Right" Name="Remove" VerticalAlignment="Top" Width="89" FontSize="20" Grid.Row="2" Command="{Binding RemovePatientCommand}" IsEnabled="{Binding UserRight}"/>
-        <dg:DataGrid Grid.Row="3" Grid.RowSpan="7" ItemsSource="{Binding Patients}" SelectedItem="{Binding SelectPatient}" SelectionChanged="DataGrid_SelectionChanged" Margin="0,0,0,47">
+        <dg:DataGrid Grid.Row="3" Grid.RowSpan="7" ItemsSource="{Binding Patients}" SelectedItem="{Binding SelectPatient, Mode=TwoWay}" Margin="0,0,0,47">
             <dg:DataGrid.Columns>
                 <dg:DataGridTextColumn IsReadOnly="True" Header="ID" Binding="{Binding Id}"/>
                 <dg:DataGridTextColumn IsReadOnly="True" Header="Name" Binding="{Binding Name}"/>

@@ -35,7 +35,14 @@ namespace HealthWatcher.ViewModel
         public Model.Patient SelectPatient
         {
             get { return _selectPatient; }
-            set { _selectPatient = value; }
+            set
+            {
+                if (_selectPatient != value)
+                {
+                    _selectPatient = value;
+                    OnPropertyChanged("SelectPatient");
+                }
+            }
         }
         public Model.Observation SelectObservation
         {
@@ -102,9 +109,9 @@ namespace HealthWatcher.ViewModel
             DataAccess.AccessPatient ap = new DataAccess.AccessPatient();
             Patients = ap.GetListPatient();
             if (Patients != null && Patients.Count > 0)
-            SelectPatient = Patients[0];
+                SelectPatient = Patients[0];
             if (Patients[0].Observations != null && Patients[0].Observations.Count > 0)
-            SelectObservation = Patients[0].Observations[0];
+                SelectObservation = Patients[0].Observations[0];
             CurrentUser = currentUser;
             Uvm = uvm;
             if (currentUser.Role == "Infirmière")
@@ -148,7 +155,7 @@ namespace HealthWatcher.ViewModel
         private void AddObservationAccess()
         {
             View.Add.AddObservation addObservationWindow = new HealthWatcher.View.Add.AddObservation();
-            ViewModel.Add.AddObservationViewModel aomv = new ViewModel.Add.AddObservationViewModel();
+            ViewModel.Add.AddObservationViewModel aomv = new ViewModel.Add.AddObservationViewModel(SelectPatient);
             addObservationWindow.DataContext = aomv;
             addObservationWindow.Show();
         }
