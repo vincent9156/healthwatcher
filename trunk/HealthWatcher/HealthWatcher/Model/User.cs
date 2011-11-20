@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Drawing;
 
 namespace HealthWatcher.Model
 {
@@ -12,7 +13,7 @@ namespace HealthWatcher.Model
         private string _pwd;
         private string _name;
         private string _firstname;
-        private Byte[] _picture;
+        private Image _picture;
         private string _role;
         private bool _connected;
         #endregion
@@ -39,7 +40,7 @@ namespace HealthWatcher.Model
         /// <summary>
         /// photos de l'utilisateur
         /// </summary>
-        public Byte[] Picture
+        public Image Picture
         {
             get { return _picture; }
             set { _picture = value; }

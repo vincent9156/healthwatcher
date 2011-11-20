@@ -62,10 +62,16 @@
     <Compile Include="DataAccess\AccessObservation.cs" />
     <Compile Include="DataAccess\AccessPatient.cs" />
     <Compile Include="DataAccess\AccessUser.cs" />
+    <Compile Include="DataAccess\MyServiceClient.cs" />
     <Compile Include="Model\Observation.cs" />
     <Compile Include="Model\Patient.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="RelayCommand.cs" />
+    <Compile Include="Service References\ServRefLive\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\ServRefObservation\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -163,6 +169,13 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Service References\ServRefLive\ServiceLive.wsdl" />
+    <None Include="Service References\ServRefLive\ServiceLive.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServRefLive\ServiceLive1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\ServRefObservation\ServiceObservation.wsdl" />
     <None Include="Service References\ServRefObservation\ServiceObservation.xsd">
       <SubType>Designer</SubType>
@@ -210,6 +223,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ServRefLive\" />
     <WCFMetadataStorage Include="Service References\ServRefObservation\" />
     <WCFMetadataStorage Include="Service References\ServRefPatient\" />
     <WCFMetadataStorage Include="Service References\ServRefUser\" />
@@ -259,7 +273,21 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Service References\ServRefLive\ServiceLive.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServRefLive\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServRefLive\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServRefLive\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Drawing;
+using System.IO;
 
 namespace HealthWatcher.DataAccess
 {
@@ -28,6 +30,21 @@ namespace HealthWatcher.DataAccess
 
         #region meth
         #region convert
+        private Byte[] ImagetoStream(Image img)
+        {
+            try
+            {
+                MemoryStream mstImage = new MemoryStream();
+                img.Save(mstImage, System.Drawing.Imaging.ImageFormat.Jpeg);
+                Byte[] bytImage = mstImage.GetBuffer();
+                return bytImage;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
         private ServRefPatient.Observation convertObs(Model.Observation obs)
         {
             ServRefPatient.Observation newObs = new ServRefPatient.Observation();
@@ -36,10 +53,30 @@ namespace HealthWatcher.DataAccess
             newObs.Weight = obs.Weight;
             newObs.Comment = obs.Comment;
             newObs.Date = obs.Date;
-            newObs.Pictures = obs.Pictures;
+            if (obs.Pictures != null)
+            {
+                for (int i = 0; i < obs.Pictures.Count(); i++)
+                {
+                    newObs.Pictures[i] = ImagetoStream(obs.Pictures[i]);
+                }
+            }
             newObs.Prescription = obs.Prescription;
 
             return newObs;
+        }
+
+        private Image StreamToImage(byte[] buff)
+        {
+            try
+            {
+                MemoryStream ms = new MemoryStream(buff);
+                Image img = Image.FromStream(ms);
+                return img;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
 
         private Model.Observation convertObs(ServRefPatient.Observation obs)
@@ -50,7 +87,13 @@ namespace HealthWatcher.DataAccess
             newObs.Weight = obs.Weight;
             newObs.Comment = obs.Comment;
             newObs.Date = obs.Date;
-            newObs.Pictures = obs.Pictures;
+            if (obs.Pictures != null && newObs.Pictures != null)
+            {
+                for (int i = 0; i < obs.Pictures.Count(); i++)
+                {
+                    newObs.Pictures[i] = StreamToImage(obs.Pictures[i]);
+                }
+            }
             newObs.Prescription = obs.Prescription;
 
             return newObs;
@@ -63,10 +106,13 @@ namespace HealthWatcher.DataAccess
             newPat.Birthday = pat.Birthday;
             newPat.Firstname = pat.Firstname;
             newPat.Name = pat.Name;
-            int i = 0;
-            foreach (Model.Observation observ in pat.Observations)
+            if (pat.Observations != null)
             {
-                newPat.Observations[i++] = convertObs(observ);
+                int i = 0;
+                foreach (Model.Observation observ in pat.Observations)
+                {
+                    newPat.Observations[i++] = convertObs(observ);
+                }
             }
             newPat.Id = pat.Id;
 
@@ -80,10 +126,13 @@ namespace HealthWatcher.DataAccess
             newPat.Birthday = pat.Birthday;
             newPat.Firstname = pat.Firstname;
             newPat.Name = pat.Name;
-            newPat.Observations = new List<Model.Observation>();
-            foreach (ServRefPatient.Observation observ in pat.Observations)
+            if (pat.Observations != null)
             {
-                newPat.Observations.Add(convertObs(observ));
+                newPat.Observations = new List<Model.Observation>();
+                foreach (ServRefPatient.Observation observ in pat.Observations)
+                {
+                    newPat.Observations.Add(convertObs(observ));
+                }
             }
             newPat.Id = pat.Id;
 

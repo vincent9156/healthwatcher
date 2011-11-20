@@ -25,12 +25,26 @@ namespace HealthWatcher.ViewModel
         public List<Model.User> Users
         {
             get { return _users; }
-            set { _users = value; }
+            set
+            {
+                if (_users != value)
+                {
+                    _users = value;
+                    OnPropertyChanged("Users");
+                }
+            }
         }
         public Model.User SelectUser
         {
             get { return _selectUser; }
-            set { _selectUser = value; }
+            set
+            {
+                if (_selectUser != value)
+                {
+                    _selectUser = value;
+                    OnPropertyChanged("SelectUser");
+                }
+            }
         }
         public Model.User CurrentUser
         {
@@ -85,13 +99,17 @@ namespace HealthWatcher.ViewModel
         private void AddUserAccess()
         {
             View.Add.AddUser addUserWindow = new HealthWatcher.View.Add.AddUser();
-            ViewModel.Add.AddUserViewModel aumv = new ViewModel.Add.AddUserViewModel();
+            ViewModel.Add.AddUserViewModel aumv = new ViewModel.Add.AddUserViewModel(this);
             addUserWindow.DataContext = aumv;
             addUserWindow.Show();
         }
 
         private void RemoveUserAccess()
         {
+            DataAccess.AccessUser access = new DataAccess.AccessUser();
+            access.DeleteUser(SelectUser.Login);
+            Users = access.GetListUser();
+            SelectUser = null;
         }
         #endregion
     }

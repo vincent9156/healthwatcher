@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using HealthWatcher.Model;
+using System.Drawing;
+using System.IO;
 
 namespace HealthWatcher.DataAccess
 {
@@ -28,6 +30,21 @@ namespace HealthWatcher.DataAccess
 
         #region meth
         #region convert
+        private Byte[] ImagetoStream(Image img)
+        {
+            try
+            {
+                MemoryStream mstImage = new MemoryStream();
+                img.Save(mstImage, System.Drawing.Imaging.ImageFormat.Jpeg);
+                Byte[] bytImage = mstImage.GetBuffer();
+                return bytImage;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
         private ServRefObservation.Observation convertObs(Observation obs)
         {
             ServRefObservation.Observation newObs = new ServRefObservation.Observation();
@@ -36,7 +53,10 @@ namespace HealthWatcher.DataAccess
             newObs.Weight = obs.Weight;
             newObs.Comment = obs.Comment;
             newObs.Date = obs.Date;
-            newObs.Pictures = obs.Pictures;
+            for (int i = 0; i < obs.Pictures.Count(); i++)
+            {
+                newObs.Pictures[i] = ImagetoStream(obs.Pictures[i]);
+            }
             newObs.Prescription = obs.Prescription;
 
             return newObs;

@@ -14,6 +14,8 @@ namespace HealthWatcher.ViewModel
         private List<Model.Patient> _patients;
         private Model.Patient _selectPatient;
         private Model.Observation _selectObservation;
+        private int _bloodPressure;
+        private int _temperature;
         private string _userRight;
         private bool _closeSignal;
         #endregion
@@ -30,7 +32,14 @@ namespace HealthWatcher.ViewModel
         public List<Model.Patient> Patients
         {
             get { return _patients; }
-            set { _patients = value; }
+            set
+            {
+                if (_patients != value)
+                {
+                    _patients = value;
+                    OnPropertyChanged("Patients");
+                }
+            }
         }
         public Model.Patient SelectPatient
         {
@@ -47,7 +56,24 @@ namespace HealthWatcher.ViewModel
         public Model.Observation SelectObservation
         {
             get { return _selectObservation; }
-            set { _selectObservation = value; }
+            set
+            {
+                if (_selectObservation != value)
+                {
+                    _selectObservation = value;
+                    OnPropertyChanged("SelectObservation");
+                }
+            }
+        }
+        public int Temperature
+        {
+            get { return _temperature; }
+            set { _temperature = value; }
+        }
+        public int BloodPressure
+        {
+            get { return _bloodPressure; }
+            set { _bloodPressure = value; }
         }
         public Model.User CurrentUser
         {
@@ -114,6 +140,10 @@ namespace HealthWatcher.ViewModel
                 SelectObservation = Patients[0].Observations[0];
             CurrentUser = currentUser;
             Uvm = uvm;
+
+            //ServRefLive.ServiceLiveClient slc = new ServRefLive.ServiceLiveClient(new System.ServiceModel.InstanceContext(new DataAccess.MyServiceClient()));
+            //slc.Subscribe();
+
             if (currentUser.Role == "Infirmière")
                 UserRight = "False";
             else
@@ -124,7 +154,6 @@ namespace HealthWatcher.ViewModel
             _addPatientCommand = new RelayCommand(param => AddPatientAccess(), param => true);
             _removePatientCommand = new RelayCommand(param => RemovePatientAccess(), param => true);
             _addObservationCommand = new RelayCommand(param => AddObservationAccess(), param => true);
-            _removeObservationCommand = new RelayCommand(param => RemoveObservationAccess(), param => true);
         }
         #endregion
 
@@ -143,25 +172,25 @@ namespace HealthWatcher.ViewModel
         private void AddPatientAccess()
         {
             View.Add.AddPatient addPatientWindow = new HealthWatcher.View.Add.AddPatient();
-            ViewModel.Add.AddPatientViewModel apmv = new ViewModel.Add.AddPatientViewModel();
+            ViewModel.Add.AddPatientViewModel apmv = new ViewModel.Add.AddPatientViewModel(this);
             addPatientWindow.DataContext = apmv;
             addPatientWindow.Show();
         }
 
         private void RemovePatientAccess()
         {
+            DataAccess.AccessPatient access = new DataAccess.AccessPatient();
+            access.DeletePatient(SelectPatient.Id);
+            Patients = access.GetListPatient();
+            SelectPatient = null;
         }
 
         private void AddObservationAccess()
         {
             View.Add.AddObservation addObservationWindow = new HealthWatcher.View.Add.AddObservation();
-            ViewModel.Add.AddObservationViewModel aomv = new ViewModel.Add.AddObservationViewModel(SelectPatient);
+            ViewModel.Add.AddObservationViewModel aomv = new ViewModel.Add.AddObservationViewModel(SelectPatient, this);
             addObservationWindow.DataContext = aomv;
             addObservationWindow.Show();
-        }
-
-        private void RemoveObservationAccess()
-        {
         }
         #endregion
     }

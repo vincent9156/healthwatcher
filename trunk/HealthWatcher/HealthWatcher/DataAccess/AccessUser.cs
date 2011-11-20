@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web;
+using System.IO;
+using System.Drawing;
 
 namespace HealthWatcher.DataAccess
 {
@@ -27,6 +29,21 @@ namespace HealthWatcher.DataAccess
 
         #region meth
         #region convert
+        private Byte[] ImagetoStream(Image img)
+        {
+            try
+            {
+                MemoryStream mstImage = new MemoryStream();
+                img.Save(mstImage, System.Drawing.Imaging.ImageFormat.Jpeg);
+                Byte[] bytImage = mstImage.GetBuffer();
+                return bytImage;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
         private ServRefUser.User convertUser(Model.User user)
         {
             ServRefUser.User newUser = new ServRefUser.User();
@@ -35,11 +52,25 @@ namespace HealthWatcher.DataAccess
             newUser.Pwd = user.Pwd;
             newUser.Name = user.Name;
             newUser.Firstname = user.Firstname;
-            newUser.Picture = user.Picture;
+            newUser.Picture = ImagetoStream(user.Picture);
             newUser.Role = user.Role;
             newUser.Connected = user.Connected;
 
             return newUser;
+        }
+
+        private Image StreamToImage(byte[] buff)
+        {
+            try
+            {
+                MemoryStream ms = new MemoryStream(buff);
+                Image img = Image.FromStream(ms);
+                return img;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
 
         private Model.User convertUser(ServRefUser.User user)
@@ -50,7 +81,7 @@ namespace HealthWatcher.DataAccess
             newUser.Pwd = user.Pwd;
             newUser.Name = user.Name;
             newUser.Firstname = user.Firstname;
-            newUser.Picture = user.Picture;
+            newUser.Picture = StreamToImage(user.Picture);
             newUser.Role = user.Role;
             newUser.Connected = user.Connected;
 

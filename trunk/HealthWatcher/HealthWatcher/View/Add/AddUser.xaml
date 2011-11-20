@@ -33,10 +33,10 @@
         <TextBox Text="{Binding User.Name, Mode=TwoWay}" Grid.Column="1" Grid.Row="2" Height="23" HorizontalAlignment="Left" Margin="0,58,0,0" Name="textBoxName" VerticalAlignment="Top" Width="127" />
         <TextBlock Grid.Row="2" Height="23" HorizontalAlignment="Left" Margin="39,87,0,0" Name="textBlockFirstname" Text="Firstname:" VerticalAlignment="Top" Width="100" />
         <TextBox Text="{Binding User.Firstname, Mode=TwoWay}" Grid.Column="1" Grid.Row="2" Height="23" HorizontalAlignment="Left" Margin="0,87,0,0" Name="textBoxFirstname" VerticalAlignment="Top" Width="127" />
-        <TextBlock Grid.Row="2" Height="23" HorizontalAlignment="Left" Margin="39,116,0,0" Name="textBlockRole" Text="Role" VerticalAlignment="Top" Width="100" />
+        <TextBlock Grid.Row="2" Height="23" HorizontalAlignment="Left" Margin="39,116,0,0" Name="textBlockRole" Text="Role:" VerticalAlignment="Top" Width="100" />
         <TextBox Text="{Binding User.Role, Mode=TwoWay}" Grid.Column="1" Grid.Row="2" Height="23" HorizontalAlignment="Left" Margin="0,116,0,0" Name="textBoxRole" VerticalAlignment="Top" Width="127" />
         <TextBlock Grid.Row="2" Height="23" HorizontalAlignment="Left" Margin="39,154,0,0" Name="textBlockPicture" Text="Picture:" VerticalAlignment="Top" Width="100" />
-        <Button Content="Browse" Grid.Column="1" Grid.Row="2" Height="23" HorizontalAlignment="Left" Margin="29,154,0,0" Name="buttonBrowse" VerticalAlignment="Top" Width="80" />
+        <Button Content="+" Grid.Column="1" Grid.Row="2" Height="23" HorizontalAlignment="Left" Margin="29,154,0,0" Name="buttonBrowse" VerticalAlignment="Top" Width="80" />
         <Image Grid.Column="1" Grid.Row="2" Height="80" HorizontalAlignment="Left" Margin="29,183,0,0" Name="image" Stretch="Fill" VerticalAlignment="Top" Width="80" />
         <Button Command="{Binding AddCommand}" Content="Add" Grid.Row="3" Height="40" HorizontalAlignment="Left" Name="buttonAdd" VerticalAlignment="Top" Width="75" Margin="103,15,0,0" Grid.ColumnSpan="2" />
     </Grid>
