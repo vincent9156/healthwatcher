@@ -57,7 +57,14 @@ namespace HealthWatcher.ViewModel
         public string LoginFail
         {
             get { return _loginFail; }
-            set { _loginFail = value; }
+            set
+            {
+                if (_loginFail != value)
+                {
+                    _loginFail = value;
+                    OnPropertyChanged("LoginFail");
+                }
+            }
         }
 
         /// <summary>
@@ -114,12 +121,14 @@ namespace HealthWatcher.ViewModel
             {
                 if (Password != "" && (Password == currentUser.Pwd))
                 {
-                    View.Users usersWindow = new HealthWatcher.View.Users();
                     View.Patients patientsWindow = new HealthWatcher.View.Patients();
-                    
-                    ViewModel.UsersViewModel umv = new ViewModel.UsersViewModel(currentUser);
-                    ViewModel.PatientsViewModel pmv = new ViewModel.PatientsViewModel(currentUser, umv);
+                    View.Users usersWindow = new HealthWatcher.View.Users();
 
+                    au.Connect(currentUser.Login, currentUser.Pwd);
+
+                    ViewModel.PatientsViewModel pmv = new ViewModel.PatientsViewModel(currentUser);
+                    ViewModel.UsersViewModel umv = new ViewModel.UsersViewModel(currentUser, pmv);
+                    
                     
                     patientsWindow.Left = (Screen.PrimaryScreen.Bounds.Width * 72 / 96)/2 - 400;
                     patientsWindow.Top = (Screen.PrimaryScreen.Bounds.Height * 72 / 96)/2 - 300;
@@ -131,18 +140,12 @@ namespace HealthWatcher.ViewModel
                     patientsWindow.Show();
                     usersWindow.Show();
 
-                    au.Connect(currentUser.Login, currentUser.Pwd);
-
                     CloseSignal = true;
-                }
-                else
-                {
-                    LoginFail = "Wrong Password";
                 }
             }
             else
             {
-                LoginFail = "Wrong Login";
+                LoginFail = "Wrong Login or Password";
             }
         }
         #endregion

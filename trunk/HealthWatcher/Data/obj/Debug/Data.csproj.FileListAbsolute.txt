@@ -61,3 +61,12 @@ E:\healthwatcher\HealthWatcher\Data\bin\Debug\Interfaces.pdb
 E:\healthwatcher\HealthWatcher\Data\obj\Debug\ResolveAssemblyReference.cache
 E:\healthwatcher\HealthWatcher\Data\obj\Debug\Data.dll
 E:\healthwatcher\HealthWatcher\Data\obj\Debug\Data.pdb
+H:\healthwatcher\HealthWatcher\Data\bin\Debug\Data.dll
+H:\healthwatcher\HealthWatcher\Data\bin\Debug\Data.pdb
+H:\healthwatcher\HealthWatcher\Data\bin\Debug\Dbo.dll
+H:\healthwatcher\HealthWatcher\Data\bin\Debug\Interfaces.dll
+H:\healthwatcher\HealthWatcher\Data\bin\Debug\Dbo.pdb
+H:\healthwatcher\HealthWatcher\Data\bin\Debug\Interfaces.pdb
+H:\healthwatcher\HealthWatcher\Data\obj\Debug\ResolveAssemblyReference.cache
+H:\healthwatcher\HealthWatcher\Data\obj\Debug\Data.dll
+H:\healthwatcher\HealthWatcher\Data\obj\Debug\Data.pdb

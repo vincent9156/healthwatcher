@@ -3,8 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:dg="http://schemas.microsoft.com/wpf/2008/toolkit"
         xmlns:Behaviours="clr-namespace:HealthWatcher.Behaviors"
+        xmlns:Converter="clr-namespace:HealthWatcher.Converter"
         Title="Users" Height="600" Width="200" ResizeMode="NoResize">
     <Window.Resources>
+        <Converter:BoolConverter x:Key="bc" />
         <Style x:Key="StyleMainGrid">
             <!--trigger pour fermer la fenêtre-->
             <Style.Triggers>
@@ -24,7 +26,8 @@
             <RowDefinition Height="34*" />
             <RowDefinition Height="10*" />
             <RowDefinition Height="32*" />
-            <RowDefinition Height="360*" />
+            <RowDefinition Height="41*" />
+            <RowDefinition Height="319*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0*" />
@@ -37,20 +40,30 @@
         <TextBlock Grid.Column="2" Grid.Row="3" Height="27" HorizontalAlignment="Left" Name="textBlockName" VerticalAlignment="Top" Width="89" Text="{Binding CurrentUser.Name}"/>
         <TextBlock Grid.Column="2" Grid.Row="4" Height="28" HorizontalAlignment="Left" Name="textBlockFirstName" VerticalAlignment="Top" Width="89" Text="{Binding CurrentUser.Firstname}"/>
         <TextBlock Grid.Column="2" Grid.Row="5" Height="28" HorizontalAlignment="Left" Name="textBlockRole" VerticalAlignment="Top" Width="89" Text="{Binding CurrentUser.Role}"/>
-        <Button Content="+" Height="32" HorizontalAlignment="Left" Name="Add" VerticalAlignment="Top" Width="89" FontSize="20" Grid.Column="1" Grid.Row="7" Command="{Binding AddUserCommand}" IsEnabled="{Binding UserRight}"/>
-        <Button Content="-" Height="32" HorizontalAlignment="Left" Name="Remove" VerticalAlignment="Top" Width="89" FontSize="20" Grid.Column="2" Grid.Row="7" Command="{Binding RemoveUserCommand}" IsEnabled="{Binding UserRight}"/>
-        <dg:DataGrid Name="userDataGrid" ItemsSource="{Binding Users}" SelectedItem="{Binding SelectUser, Mode=TwoWay}" Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="2" AutoGenerateColumns="False">
+        <Button Content="+" Height="32" HorizontalAlignment="Left" Name="Add" VerticalAlignment="Top" Width="89" FontSize="20" Grid.Column="1" Grid.Row="7" Command="{Binding AddUserCommand}" IsEnabled="{Binding UserRight}" />
+        <Button Content="-" Height="32" HorizontalAlignment="Left" Name="Remove" VerticalAlignment="Top" Width="89" FontSize="20" Grid.Column="2" Grid.Row="7" Command="{Binding RemoveUserCommand}" IsEnabled="{Binding UserRight}" />
+        <dg:DataGrid Name="userDataGrid" ItemsSource="{Binding Users}" SelectedItem="{Binding SelectUser, Mode=TwoWay}" Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="2" AutoGenerateColumns="False" Grid.RowSpan="2">
             <dg:DataGrid.Columns>
-                <dg:DataGridTextColumn IsReadOnly="True" Header="Login" Binding="{Binding Login}"/>
-                <dg:DataGridTextColumn IsReadOnly="True" Header="Role" Binding="{Binding Role}"/>
-                <dg:DataGridTemplateColumn Header="Status" IsReadOnly="True">
+                <dg:DataGridTemplateColumn Header="Picture" IsReadOnly="True" MaxWidth="50" MinWidth="50">
                     <dg:DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Image Source="{Binding StatusImage}" />
+                            <Image Height="50" Width="50" Source="{Binding Picture.Source}" />
                         </DataTemplate>
                     </dg:DataGridTemplateColumn.CellTemplate>
                 </dg:DataGridTemplateColumn>
+                <dg:DataGridTextColumn IsReadOnly="True" Header="Login" Binding="{Binding Login}" MaxWidth="40" MinWidth="40"/>
+                <dg:DataGridTextColumn IsReadOnly="True" Header="Role" Binding="{Binding Role}" MaxWidth="55" MinWidth="55" />
+                <dg:DataGridTemplateColumn Header="Status" IsReadOnly="True" MinWidth="45" MaxWidth="45">
+                    <dg:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Ellipse x:Name="ellipse1" Width="10" Height="10" Stroke="Black" Fill="{Binding Connected, Converter={StaticResource bc}}" />
+                        </DataTemplate>
+                    </dg:DataGridTemplateColumn.CellTemplate>
+                </dg:DataGridTemplateColumn>
+                <dg:DataGridTextColumn IsReadOnly="True" Header="Name" Binding="{Binding Name}"/>
+                <dg:DataGridTextColumn IsReadOnly="True" Header="Firstname" Binding="{Binding Firstname}"/>
             </dg:DataGrid.Columns>
         </dg:DataGrid>
+        <Button Content="Log out" Grid.Column="2" Grid.Row="2" Height="22" HorizontalAlignment="Left" Name="button2" VerticalAlignment="Top" Width="89" Command="{Binding LogoutCommand}"/>
     </Grid>
 </Window>

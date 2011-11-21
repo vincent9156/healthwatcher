@@ -59,6 +59,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Behaviors\WindowCloseBehaviour.cs" />
+    <Compile Include="Converter\BoolConverter.cs" />
+    <Compile Include="Converter\DateConverter.cs" />
     <Compile Include="DataAccess\AccessObservation.cs" />
     <Compile Include="DataAccess\AccessPatient.cs" />
     <Compile Include="DataAccess\AccessUser.cs" />

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Input;
+using System.Windows.Forms;
 
 namespace HealthWatcher.ViewModel
 {
@@ -10,7 +11,6 @@ namespace HealthWatcher.ViewModel
     {
         #region attr
         private Model.User _currentUser;
-        private ViewModel.UsersViewModel _uvm;
         private List<Model.Patient> _patients;
         private Model.Patient _selectPatient;
         private Model.Observation _selectObservation;
@@ -21,7 +21,6 @@ namespace HealthWatcher.ViewModel
         #endregion
 
         #region commandes
-        private ICommand _logoutCommand;
         private ICommand _addPatientCommand;
         private ICommand _removePatientCommand;
         private ICommand _addObservationCommand;
@@ -80,20 +79,10 @@ namespace HealthWatcher.ViewModel
             get { return _currentUser; }
             set { _currentUser = value; }
         }
-        public ViewModel.UsersViewModel Uvm
-        {
-            get { return _uvm; }
-            set { _uvm = value; }
-        }
         public string UserRight
         {
             get { return _userRight; }
             set { _userRight = value; }
-        }
-        public ICommand LogoutCommand
-        {
-            get { return _logoutCommand; }
-            set { _logoutCommand = value; }
         }
         public ICommand AddPatientCommand
         {
@@ -130,7 +119,7 @@ namespace HealthWatcher.ViewModel
         #endregion
 
         #region ctor
-        public PatientsViewModel(Model.User currentUser, ViewModel.UsersViewModel uvm)
+        public PatientsViewModel(Model.User currentUser)
         {
             DataAccess.AccessPatient ap = new DataAccess.AccessPatient();
             Patients = ap.GetListPatient();
@@ -139,7 +128,6 @@ namespace HealthWatcher.ViewModel
             if (Patients[0].Observations != null && Patients[0].Observations.Count > 0)
                 SelectObservation = Patients[0].Observations[0];
             CurrentUser = currentUser;
-            Uvm = uvm;
 
             //ServRefLive.ServiceLiveClient slc = new ServRefLive.ServiceLiveClient(new System.ServiceModel.InstanceContext(new DataAccess.MyServiceClient()));
             //slc.Subscribe();
@@ -150,7 +138,6 @@ namespace HealthWatcher.ViewModel
                 UserRight = "True";
 
             //commandes
-            _logoutCommand = new RelayCommand(param => LogoutAccess(), param => true);
             _addPatientCommand = new RelayCommand(param => AddPatientAccess(), param => true);
             _removePatientCommand = new RelayCommand(param => RemovePatientAccess(), param => true);
             _addObservationCommand = new RelayCommand(param => AddObservationAccess(), param => true);
@@ -158,19 +145,7 @@ namespace HealthWatcher.ViewModel
         #endregion
 
         #region meth
-        private void LogoutAccess()
-        {
-            View.Login loginWindow = new HealthWatcher.View.Login();
-            ViewModel.LoginViewModel lmv = new ViewModel.LoginViewModel();
-            loginWindow.DataContext = lmv;
-            loginWindow.Show();
-
-            DataAccess.AccessUser au = new DataAccess.AccessUser();
-            au.Disconnect(CurrentUser.Login);
-
-            Uvm.CloseSignal = true;
-            CloseSignal = true;
-        }
+        
 
         private void AddPatientAccess()
         {

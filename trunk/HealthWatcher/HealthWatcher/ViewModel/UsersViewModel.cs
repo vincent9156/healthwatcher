@@ -3,12 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Input;
+using System.Windows.Forms;
 
 namespace HealthWatcher.ViewModel
 {
     class UsersViewModel : BaseViewModel
     {
         #region attr
+        private ViewModel.PatientsViewModel _pvm;
+
+        public ViewModel.PatientsViewModel Pvm
+        {
+            get { return _pvm; }
+            set { _pvm = value; }
+        }
+        
         private Model.User _currentUser;
         private List<Model.User> _users;
         private Model.User _selectUser;
@@ -17,6 +26,7 @@ namespace HealthWatcher.ViewModel
         #endregion
 
         #region commandes
+        private ICommand _logoutCommand;
         private ICommand _addUserCommand;
         private ICommand _removeUserCommand;
         #endregion
@@ -56,6 +66,11 @@ namespace HealthWatcher.ViewModel
             get { return _userRight; }
             set { _userRight = value; }
         }
+        public ICommand LogoutCommand
+        {
+            get { return _logoutCommand; }
+            set { _logoutCommand = value; }
+        }
         public ICommand AddUserCommand
         {
             get { return _addUserCommand; }
@@ -81,8 +96,9 @@ namespace HealthWatcher.ViewModel
         #endregion
 
         #region ctor
-        public UsersViewModel(Model.User currentUser)
+        public UsersViewModel(Model.User currentUser, ViewModel.PatientsViewModel pvm)
         {
+            Pvm = pvm;
             DataAccess.AccessUser au = new DataAccess.AccessUser();
             Users = au.GetListUser();
             CurrentUser = currentUser;
@@ -90,12 +106,28 @@ namespace HealthWatcher.ViewModel
                 UserRight = "False";
             else
                 UserRight = "True";
+            _logoutCommand = new RelayCommand(param => LogoutAccess(), param => true);
             _addUserCommand = new RelayCommand(param => AddUserAccess(), param => true);
             _removeUserCommand = new RelayCommand(param => RemoveUserAccess(), param => true);
         }
         #endregion
 
         #region meth
+        private void LogoutAccess()
+        {
+            View.Login loginWindow = new HealthWatcher.View.Login();
+            ViewModel.LoginViewModel lmv = new ViewModel.LoginViewModel();
+            loginWindow.Left = (Screen.PrimaryScreen.Bounds.Width * 72 / 96) / 2 - 225;
+            loginWindow.Top = (Screen.PrimaryScreen.Bounds.Height * 72 / 96) / 2 - 175;
+            loginWindow.DataContext = lmv;
+            loginWindow.Show();
+
+            DataAccess.AccessUser au = new DataAccess.AccessUser();
+            au.Disconnect(CurrentUser.Login);
+
+            Pvm.CloseSignal = true;
+            CloseSignal = true;
+        }
         private void AddUserAccess()
         {
             View.Add.AddUser addUserWindow = new HealthWatcher.View.Add.AddUser();
