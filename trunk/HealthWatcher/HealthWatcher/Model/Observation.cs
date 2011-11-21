@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Drawing;
+using System.Windows.Controls;
 
 namespace HealthWatcher.Model
 {
@@ -12,7 +12,7 @@ namespace HealthWatcher.Model
         private DateTime _date;
         private string _comment;
         private string[] _prescription;
-        private Image[] _pictures;
+        private List<Image> _pictures;
         private int _weight;
 
         private int _bloodPressure;
@@ -42,7 +42,7 @@ namespace HealthWatcher.Model
         /// <summary>
         /// images associées à l'observations
         /// </summary>
-        public Image[] Pictures
+        public List<Image> Pictures
         {
             get { return _pictures; }
             set { _pictures = value; }

@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Drawing;
 using System.IO;
+using System.Windows.Media.Imaging;
+using System.Windows.Controls;
 
 namespace HealthWatcher.DataAccess
 {
@@ -30,19 +31,19 @@ namespace HealthWatcher.DataAccess
 
         #region meth
         #region convert
-        private Byte[] ImagetoStream(Image img)
+        public Byte[] BufferFromImage(BitmapImage imageSource)
         {
-            try
+            Stream stream = imageSource.StreamSource;
+            Byte[] buffer = null;
+            if (stream != null && stream.Length > 0)
             {
-                MemoryStream mstImage = new MemoryStream();
-                img.Save(mstImage, System.Drawing.Imaging.ImageFormat.Jpeg);
-                Byte[] bytImage = mstImage.GetBuffer();
-                return bytImage;
+                using (BinaryReader br = new BinaryReader(stream))
+                {
+                    buffer = br.ReadBytes((Int32)stream.Length);
+                }
             }
-            catch (Exception ex)
-            {
-                return null;
-            }
+
+            return buffer;
         }
 
         private ServRefPatient.Observation convertObs(Model.Observation obs)
@@ -57,7 +58,7 @@ namespace HealthWatcher.DataAccess
             {
                 for (int i = 0; i < obs.Pictures.Count(); i++)
                 {
-                    newObs.Pictures[i] = ImagetoStream(obs.Pictures[i]);
+                    newObs.Pictures[i] = BufferFromImage((BitmapImage) obs.Pictures[i].Source);
                 }
             }
             newObs.Prescription = obs.Prescription;
@@ -65,18 +66,16 @@ namespace HealthWatcher.DataAccess
             return newObs;
         }
 
-        private Image StreamToImage(byte[] buff)
+        public BitmapImage ImageFromBuffer(Byte[] bytes)
         {
-            try
-            {
-                MemoryStream ms = new MemoryStream(buff);
-                Image img = Image.FromStream(ms);
-                return img;
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
+            MemoryStream stream = new MemoryStream(bytes);
+            BitmapImage image = new BitmapImage();
+            image.BeginInit();
+            image.StreamSource = stream;
+            image.DecodePixelHeight = 120;
+            image.DecodePixelWidth = 120;
+            image.EndInit();
+            return image;
         }
 
         private Model.Observation convertObs(ServRefPatient.Observation obs)
@@ -87,11 +86,14 @@ namespace HealthWatcher.DataAccess
             newObs.Weight = obs.Weight;
             newObs.Comment = obs.Comment;
             newObs.Date = obs.Date;
-            if (obs.Pictures != null && newObs.Pictures != null)
+            newObs.Pictures = new List<Image>();
+            if (obs.Pictures != null)
             {
                 for (int i = 0; i < obs.Pictures.Count(); i++)
                 {
-                    newObs.Pictures[i] = StreamToImage(obs.Pictures[i]);
+                    Image img = new Image();
+                    img.Source = ImageFromBuffer(obs.Pictures[i]);
+                    newObs.Pictures.Add(img);
                 }
             }
             newObs.Prescription = obs.Prescription;

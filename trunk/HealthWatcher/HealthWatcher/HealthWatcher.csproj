@@ -62,7 +62,6 @@
     <Compile Include="DataAccess\AccessObservation.cs" />
     <Compile Include="DataAccess\AccessPatient.cs" />
     <Compile Include="DataAccess\AccessUser.cs" />
-    <Compile Include="DataAccess\MyServiceClient.cs" />
     <Compile Include="Model\Observation.cs" />
     <Compile Include="Model\Patient.cs" />
     <Compile Include="Model\User.cs" />

@@ -7,8 +7,11 @@
     <Window.Resources>
         <DataTemplate x:Key="dtObservationList">
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="{Binding Path=Date}"/>
+                <TextBlock Text="{Binding Date}"/>
             </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="dtPictureList">
+                <Image Source="{Binding Source}"/>
         </DataTemplate>
         <Style x:Key="StyleMainGrid">
             <!--trigger pour fermer la fenêtre-->
@@ -27,7 +30,9 @@
             <ColumnDefinition Width="11*" />
             <ColumnDefinition Width="129*" />
             <ColumnDefinition Width="11*" />
-            <ColumnDefinition Width="130*" />
+            <ColumnDefinition Width="60*" />
+            <ColumnDefinition Width="10*" />
+            <ColumnDefinition Width="60*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="32" />
@@ -51,18 +56,18 @@
                 <dg:DataGridTextColumn IsReadOnly="True" Header="Firstname" Binding="{Binding Firstname}"/>
             </dg:DataGrid.Columns>
         </dg:DataGrid>
-        <Label Content="Observations" Grid.Column="2" Height="32" HorizontalAlignment="Left" Name="ObservationLabel" VerticalAlignment="Top" Width="380" FontSize="20" HorizontalContentAlignment="Center" Grid.ColumnSpan="5" />
+        <Label Content="Observations" Grid.Column="2" Height="32" HorizontalAlignment="Left" Name="ObservationLabel" VerticalAlignment="Top" Width="380" FontSize="20" HorizontalContentAlignment="Center" Grid.ColumnSpan="7" />
         <Button Content="+" Grid.Column="2" Grid.Row="2" Height="32" HorizontalAlignment="Left" Name="AddObservation" VerticalAlignment="Top" Width="100" FontSize="20" Command="{Binding AddObservationCommand}" IsEnabled="{Binding UserRight}"/>
         <ListBox Grid.Column="2" Grid.Row="3" Height="440" HorizontalAlignment="Left" Name="ObservationList" VerticalAlignment="Top" Width="99" Grid.RowSpan="7" ItemsSource="{Binding SelectPatient.Observations}" ItemTemplate="{StaticResource dtObservationList}" SelectedItem="{Binding SelectObservation}"/>
-        <ListBox Grid.Column="3" Grid.Row="5" Height="64" HorizontalAlignment="Left" Name="PictureList" VerticalAlignment="Top" Width="270" Grid.ColumnSpan="4" Margin="10,1,0,0" ItemsSource="{Binding SelectObservation.Pictures}" Grid.RowSpan="2" HorizontalContentAlignment="Left"/>
+        <ListBox Grid.Column="4" Grid.Row="2" Height="140" HorizontalAlignment="Left" Name="PictureList" VerticalAlignment="Top" Width="140" Grid.ColumnSpan="3" ItemsSource="{Binding SelectObservation.Pictures}" ItemTemplate="{StaticResource dtPictureList}" Grid.RowSpan="5" HorizontalContentAlignment="Left" />
         <Label Content="Blood Pressure :" Grid.Column="3" Grid.Row="7" Height="30" HorizontalAlignment="Left" Margin="11,0,0,0" Name="BloodPressureLabel" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="129" />
-        <TextBlock Grid.Column="5" Grid.Row="7" Height="30" HorizontalAlignment="Left" Name="BloodPressureTextBlock" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="141" Text="{Binding SelectObservation.BloodPressure}" />
+        <TextBlock Grid.Column="5" Grid.Row="7" Height="30" HorizontalAlignment="Left" Name="BloodPressureTextBlock" VerticalAlignment="Top" Grid.ColumnSpan="4" Width="141" Text="{Binding SelectObservation.BloodPressure}" />
         <Label Content="Weight :" Grid.Column="4" Grid.Row="8" Height="30" HorizontalAlignment="Left" Margin="1,0,0,0" Name="WeightLabel" VerticalAlignment="Top" Width="127" />
-        <TextBlock Grid.Column="5" Grid.Row="8" Height="30" HorizontalAlignment="Left" Name="WeightTextBlock" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="141" Text="{Binding SelectObservation.Weight}"/>
-        <TextBlock Grid.Column="4" Grid.Row="9" Height="264" HorizontalAlignment="Left" Name="CommentTextBlock" VerticalAlignment="Top" Width="153" Text="{Binding SelectObservation.Comment}" Margin="117,0,0,0" Grid.ColumnSpan="3" />
-        <ListBox Grid.Column="4" Grid.Row="9" Height="264" HorizontalAlignment="Left" Margin="11,0,0,0" Name="textBoxPrescription" VerticalAlignment="Top" Width="100" ItemsSource="{Binding SelectObservation.Prescription}"/>
+        <TextBlock Grid.Column="5" Grid.Row="8" Height="30" HorizontalAlignment="Left" Name="WeightTextBlock" VerticalAlignment="Top" Grid.ColumnSpan="4" Width="141" Text="{Binding SelectObservation.Weight}"/>
+        <TextBlock Grid.Column="4" Grid.Row="9" Height="264" HorizontalAlignment="Left" Name="CommentTextBlock" VerticalAlignment="Top" Width="162" Text="{Binding SelectObservation.Comment}" Margin="108,0,0,0" Grid.ColumnSpan="5" />
+        <ListBox Grid.Column="4" Grid.Row="9" Height="264" HorizontalAlignment="Left" Margin="2,0,0,0" Name="textBoxPrescription" VerticalAlignment="Top" Width="100" ItemsSource="{Binding SelectObservation.Prescription}"/>
         <Button Content="Log out" Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="9" Height="23" HorizontalAlignment="Left" Margin="50,276,0,0" Name="buttonLogout" VerticalAlignment="Top" Width="120" Command="{Binding LogoutCommand}"/>
-        <Rectangle Grid.Column="4" Grid.Row="2" Grid.RowSpan="2" Height="64" HorizontalAlignment="Left" Name="rectangle1" Stroke="Black" VerticalAlignment="Top" Width="50" Margin="78,0,0,0" Fill="Red" />
-        <Rectangle Grid.Column="6" Grid.Row="2" Grid.RowSpan="2" Height="64" HorizontalAlignment="Left" Name="rectangle2" Stroke="Black" VerticalAlignment="Top" Width="50" Fill="Yellow" />
+        <Rectangle Grid.Column="6" Grid.Row="2" Height="138" HorizontalAlignment="Left" Name="rectangle1" Stroke="Black" VerticalAlignment="Top" Width="50" Fill="Red" Margin="10,0,0,0" Grid.RowSpan="4" />
+        <Rectangle Grid.Column="8" Grid.Row="2" Height="138" HorizontalAlignment="Left" Name="rectangle2" Stroke="Black" VerticalAlignment="Top" Width="50" Fill="Yellow" Grid.RowSpan="4" />
     </Grid>
 </Window>

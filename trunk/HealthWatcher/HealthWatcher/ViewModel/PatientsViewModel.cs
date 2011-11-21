@@ -165,6 +165,9 @@ namespace HealthWatcher.ViewModel
             loginWindow.DataContext = lmv;
             loginWindow.Show();
 
+            DataAccess.AccessUser au = new DataAccess.AccessUser();
+            au.Disconnect(CurrentUser.Login);
+
             Uvm.CloseSignal = true;
             CloseSignal = true;
         }

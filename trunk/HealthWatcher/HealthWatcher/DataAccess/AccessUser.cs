@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.IO;
-using System.Drawing;
+using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 
 namespace HealthWatcher.DataAccess
 {
@@ -29,19 +30,19 @@ namespace HealthWatcher.DataAccess
 
         #region meth
         #region convert
-        private Byte[] ImagetoStream(Image img)
+        public Byte[] BufferFromImage(BitmapImage imageSource)
         {
-            try
+            Stream stream = imageSource.StreamSource;
+            Byte[] buffer = null;
+            if (stream != null && stream.Length > 0)
             {
-                MemoryStream mstImage = new MemoryStream();
-                img.Save(mstImage, System.Drawing.Imaging.ImageFormat.Jpeg);
-                Byte[] bytImage = mstImage.GetBuffer();
-                return bytImage;
+                using (BinaryReader br = new BinaryReader(stream))
+                {
+                    buffer = br.ReadBytes((Int32)stream.Length);
+                }
             }
-            catch (Exception ex)
-            {
-                return null;
-            }
+
+            return buffer;
         }
 
         private ServRefUser.User convertUser(Model.User user)
@@ -52,25 +53,21 @@ namespace HealthWatcher.DataAccess
             newUser.Pwd = user.Pwd;
             newUser.Name = user.Name;
             newUser.Firstname = user.Firstname;
-            newUser.Picture = ImagetoStream(user.Picture);
+            newUser.Picture = BufferFromImage((BitmapImage) user.Picture.Source);
             newUser.Role = user.Role;
             newUser.Connected = user.Connected;
 
             return newUser;
         }
 
-        private Image StreamToImage(byte[] buff)
+        public BitmapImage ImageFromBuffer(Byte[] bytes)
         {
-            try
-            {
-                MemoryStream ms = new MemoryStream(buff);
-                Image img = Image.FromStream(ms);
-                return img;
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
+            MemoryStream stream = new MemoryStream(bytes);
+            BitmapImage image = new BitmapImage();
+            image.BeginInit();
+            image.StreamSource = stream;
+            image.EndInit();
+            return image;
         }
 
         private Model.User convertUser(ServRefUser.User user)
@@ -81,7 +78,9 @@ namespace HealthWatcher.DataAccess
             newUser.Pwd = user.Pwd;
             newUser.Name = user.Name;
             newUser.Firstname = user.Firstname;
-            newUser.Picture = StreamToImage(user.Picture);
+            newUser.Picture = new Image();
+            if (user.Picture != null)
+                newUser.Picture.Source = ImageFromBuffer(user.Picture);
             newUser.Role = user.Role;
             newUser.Connected = user.Connected;
 
@@ -97,7 +96,7 @@ namespace HealthWatcher.DataAccess
             {
                 newList.Add(convertUser(user));
             }
-
+            
             return newList;
         }
 
@@ -124,6 +123,11 @@ namespace HealthWatcher.DataAccess
         public bool Connect(string login, string pwd)
         {
             return Suc.Connect(login, pwd);
+        }
+
+        public void Disconnect(string login)
+        {
+            Suc.Disconnect(login);
         }
         #endregion
     }

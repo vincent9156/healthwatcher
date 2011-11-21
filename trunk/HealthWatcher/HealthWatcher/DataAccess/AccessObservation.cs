@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using HealthWatcher.Model;
-using System.Drawing;
 using System.IO;
+using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 
 namespace HealthWatcher.DataAccess
 {
@@ -30,19 +31,19 @@ namespace HealthWatcher.DataAccess
 
         #region meth
         #region convert
-        private Byte[] ImagetoStream(Image img)
+        public Byte[] BufferFromImage(BitmapImage imageSource)
         {
-            try
+            Stream stream = imageSource.StreamSource;
+            Byte[] buffer = null;
+            if (stream != null && stream.Length > 0)
             {
-                MemoryStream mstImage = new MemoryStream();
-                img.Save(mstImage, System.Drawing.Imaging.ImageFormat.Jpeg);
-                Byte[] bytImage = mstImage.GetBuffer();
-                return bytImage;
+                using (BinaryReader br = new BinaryReader(stream))
+                {
+                    buffer = br.ReadBytes((Int32)stream.Length);
+                }
             }
-            catch (Exception ex)
-            {
-                return null;
-            }
+
+            return buffer;
         }
 
         private ServRefObservation.Observation convertObs(Observation obs)
@@ -55,7 +56,7 @@ namespace HealthWatcher.DataAccess
             newObs.Date = obs.Date;
             for (int i = 0; i < obs.Pictures.Count(); i++)
             {
-                newObs.Pictures[i] = ImagetoStream(obs.Pictures[i]);
+                newObs.Pictures[i] = BufferFromImage((BitmapImage) obs.Pictures[i].Source);
             }
             newObs.Prescription = obs.Prescription;
 

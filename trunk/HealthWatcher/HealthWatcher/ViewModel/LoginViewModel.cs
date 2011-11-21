@@ -130,6 +130,9 @@ namespace HealthWatcher.ViewModel
                     patientsWindow.DataContext = pmv;
                     patientsWindow.Show();
                     usersWindow.Show();
+
+                    au.Connect(currentUser.Login, currentUser.Pwd);
+
                     CloseSignal = true;
                 }
                 else
