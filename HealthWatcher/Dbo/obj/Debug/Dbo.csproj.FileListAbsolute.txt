@@ -1,0 +1,5 @@
+H:\hwBIS\HealthWatcher\Dbo\bin\Debug\Dbo.dll
+H:\hwBIS\HealthWatcher\Dbo\bin\Debug\Dbo.pdb
+H:\hwBIS\HealthWatcher\Dbo\obj\Debug\ResolveAssemblyReference.cache
+H:\hwBIS\HealthWatcher\Dbo\obj\Debug\Dbo.dll
+H:\hwBIS\HealthWatcher\Dbo\obj\Debug\Dbo.pdb
