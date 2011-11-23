@@ -89,6 +89,8 @@ namespace HealthWatcher.ViewModel
                 if (_closeSignal != value)
                 {
                     _closeSignal = value;
+                    if (Pvm.CloseSignal != true)
+                        Pvm.CloseSignal = true;
                     OnPropertyChanged("CloseSignal");
                 }
             }
@@ -96,9 +98,9 @@ namespace HealthWatcher.ViewModel
         #endregion
 
         #region ctor
-        public UsersViewModel(Model.User currentUser, ViewModel.PatientsViewModel pvm)
+        public UsersViewModel(Model.User currentUser)
         {
-            Pvm = pvm;
+            Pvm = null;
             DataAccess.AccessUser au = new DataAccess.AccessUser();
             Users = au.GetListUser();
             CurrentUser = currentUser;
@@ -122,10 +124,6 @@ namespace HealthWatcher.ViewModel
             loginWindow.DataContext = lmv;
             loginWindow.Show();
 
-            DataAccess.AccessUser au = new DataAccess.AccessUser();
-            au.Disconnect(CurrentUser.Login);
-
-            Pvm.CloseSignal = true;
             CloseSignal = true;
         }
         private void AddUserAccess()

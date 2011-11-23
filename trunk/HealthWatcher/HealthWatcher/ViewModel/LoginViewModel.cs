@@ -126,17 +126,28 @@ namespace HealthWatcher.ViewModel
 
                     au.Connect(currentUser.Login, currentUser.Pwd);
 
-                    ViewModel.PatientsViewModel pmv = new ViewModel.PatientsViewModel(currentUser);
-                    ViewModel.UsersViewModel umv = new ViewModel.UsersViewModel(currentUser, pmv);
-                    
-                    
-                    patientsWindow.Left = (Screen.PrimaryScreen.Bounds.Width * 72 / 96)/2 - 400;
-                    patientsWindow.Top = (Screen.PrimaryScreen.Bounds.Height * 72 / 96)/2 - 300;
-                    usersWindow.Left = (Screen.PrimaryScreen.Bounds.Width/2 * 72 / 96) + 200;
-                    usersWindow.Top = (Screen.PrimaryScreen.Bounds.Height/2 * 72 / 96) - 300;
+                    ViewModel.PatientsViewModel pvm = new ViewModel.PatientsViewModel(currentUser);
+                    ViewModel.UsersViewModel uvm = new ViewModel.UsersViewModel(currentUser);
+                    pvm.Uvm = uvm;
+                    uvm.Pvm = pvm;
 
-                    usersWindow.DataContext = umv;
-                    patientsWindow.DataContext = pmv;
+                    /*if (Screen.PrimaryScreen.Bounds.Width == 800 && Screen.PrimaryScreen.Bounds.Width == 600)
+                    {*/
+                        patientsWindow.Left = 0;
+                        patientsWindow.Top = 0;
+                        usersWindow.Left = 600;
+                        usersWindow.Top = 0;
+                    /*}
+                    else
+                    {
+                        patientsWindow.Left = (Screen.PrimaryScreen.Bounds.Width * 72 / 96) / 2 - 400;
+                        patientsWindow.Top = (Screen.PrimaryScreen.Bounds.Height * 72 / 96) / 2 - 300;
+                        usersWindow.Left = (Screen.PrimaryScreen.Bounds.Width / 2 * 72 / 96) + 200;
+                        usersWindow.Top = (Screen.PrimaryScreen.Bounds.Height / 2 * 72 / 96) - 300;
+                    }*/
+
+                    usersWindow.DataContext = uvm;
+                    patientsWindow.DataContext = pvm;
                     patientsWindow.Show();
                     usersWindow.Show();
 

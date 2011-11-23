@@ -61,8 +61,11 @@ namespace HealthWatcher.DataAccess
                     newObs.Pictures[i] = BufferFromImage((BitmapImage) obs.Pictures[i].Source);
                 }
             }
-            newObs.Prescription = obs.Prescription;
-
+            if (obs.Prescription != null)
+            {
+                for (int i = 0; i < obs.Prescription.Count; i++)
+                    newObs.Prescription[i] = obs.Prescription[i];
+            }
             return newObs;
         }
 
@@ -96,7 +99,14 @@ namespace HealthWatcher.DataAccess
                     newObs.Pictures.Add(img);
                 }
             }
-            newObs.Prescription = obs.Prescription;
+            newObs.Prescription = new List<string>();
+            if (obs.Prescription != null)
+            {
+                for (int i = 0; i < obs.Prescription.Count(); i++)
+                {
+                    newObs.Prescription.Add(obs.Prescription[i]);
+                }
+            }
 
             return newObs;
         }

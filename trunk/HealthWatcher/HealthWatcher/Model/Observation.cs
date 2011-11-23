@@ -11,10 +11,9 @@ namespace HealthWatcher.Model
         #region attr
         private DateTime _date;
         private string _comment;
-        private string[] _prescription;
+        private List<string> _prescription;
         private List<Image> _pictures;
         private int _weight;
-
         private int _bloodPressure;
 
 
@@ -51,7 +50,7 @@ namespace HealthWatcher.Model
         /// <summary>
         /// liste des prescriptions pour l'observation
         /// </summary>
-        public string[] Prescription
+        public List<string> Prescription
         {
             get { return _prescription; }
             set { _prescription = value; }
@@ -73,6 +72,23 @@ namespace HealthWatcher.Model
         {
             get { return _date; }
             set { _date = value; }
+        }
+        #endregion
+
+        #region ctor
+        public Observation()
+        {
+
+        }
+
+        public Observation(DateTime date, String comment, List<string> prescription, List<Image> pictures, int bloodPressure, int weight)
+        {
+            Date = date;
+            Comment = comment;
+            Prescription = prescription;
+            Pictures = pictures;
+            BloodPressure = bloodPressure;
+            Weight = weight;
         }
         #endregion
     }

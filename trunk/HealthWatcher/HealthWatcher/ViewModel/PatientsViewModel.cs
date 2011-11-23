@@ -11,6 +11,7 @@ namespace HealthWatcher.ViewModel
     {
         #region attr
         private Model.User _currentUser;
+        private ViewModel.UsersViewModel _uvm;
         private List<Model.Patient> _patients;
         private Model.Patient _selectPatient;
         private Model.Observation _selectObservation;
@@ -28,6 +29,11 @@ namespace HealthWatcher.ViewModel
         #endregion
 
         #region get/set
+        public ViewModel.UsersViewModel Uvm
+        {
+            get { return _uvm; }
+            set { _uvm = value; }
+        }
         public List<Model.Patient> Patients
         {
             get { return _patients; }
@@ -111,7 +117,11 @@ namespace HealthWatcher.ViewModel
             {
                 if (_closeSignal != value)
                 {
+                    DataAccess.AccessUser au = new DataAccess.AccessUser();
+                    au.Disconnect(CurrentUser.Login);
                     _closeSignal = value;
+                    if (Uvm.CloseSignal != true)
+                        Uvm.CloseSignal = true;
                     OnPropertyChanged("CloseSignal");
                 }
             }
@@ -128,6 +138,7 @@ namespace HealthWatcher.ViewModel
             if (Patients[0].Observations != null && Patients[0].Observations.Count > 0)
                 SelectObservation = Patients[0].Observations[0];
             CurrentUser = currentUser;
+            Uvm = null;
 
             //ServRefLive.ServiceLiveClient slc = new ServRefLive.ServiceLiveClient(new System.ServiceModel.InstanceContext(new DataAccess.MyServiceClient()));
             //slc.Subscribe();
