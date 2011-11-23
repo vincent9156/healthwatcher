@@ -94,9 +94,12 @@ namespace HealthWatcher.DataAccess
             {
                 for (int i = 0; i < obs.Pictures.Count(); i++)
                 {
-                    Image img = new Image();
-                    img.Source = ImageFromBuffer(obs.Pictures[i]);
-                    newObs.Pictures.Add(img);
+                    if (obs.Pictures[i] != null)
+                    {
+                        Image img = new Image();
+                        img.Source = ImageFromBuffer(obs.Pictures[i]);
+                        newObs.Pictures.Add(img);
+                    }
                 }
             }
             newObs.Prescription = new List<string>();

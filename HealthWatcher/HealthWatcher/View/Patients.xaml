@@ -5,13 +5,16 @@
         xmlns:Behaviours="clr-namespace:HealthWatcher.Behaviors"
         Title="Patients" Height="600" Width="600" ResizeMode="NoResize">
     <Window.Resources>
+        <Style x:Key="StyleTitle">
+            <Setter Property="Label.Foreground" Value="Blue" />
+        </Style>
         <DataTemplate x:Key="dtObservationList">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="{Binding Date}"/>
             </StackPanel>
         </DataTemplate>
         <DataTemplate x:Key="dtPictureList">
-                <Image Source="{Binding Source}" Width="120" Height="120"/>
+            <Image Source="{Binding Source}" Width="120" Height="120"/>
         </DataTemplate>
         <Style x:Key="StyleMainGrid">
             <!--trigger pour fermer la fenêtre-->
@@ -46,7 +49,7 @@
             <RowDefinition Height="30*" />
             <RowDefinition Height="311*" />
         </Grid.RowDefinitions>
-        <Label Content="Patients" Height="32" HorizontalAlignment="Left" Name="PatientsLabel" VerticalAlignment="Top" Width="178" FontSize="20" HorizontalContentAlignment="Center" />
+        <Label Style="{StaticResource StyleTitle}" Content="Patients" Height="32" HorizontalAlignment="Left" Name="PatientsLabel" VerticalAlignment="Top" Width="178" FontSize="20" HorizontalContentAlignment="Center" />
         <Button Content="+" Height="32" HorizontalAlignment="Left" Name="Add" VerticalAlignment="Top" Width="89" FontSize="20" Grid.Row="2" Command="{Binding AddPatientCommand}" IsEnabled="{Binding UserRight}"/>
         <Button Content="-" Height="32" HorizontalAlignment="Right" Name="Remove" VerticalAlignment="Top" Width="89" FontSize="20" Grid.Row="2" Command="{Binding RemovePatientCommand}" IsEnabled="{Binding UserRight}"/>
         <dg:DataGrid Grid.Row="3" Grid.RowSpan="7" ItemsSource="{Binding Patients}" SelectedItem="{Binding SelectPatient, Mode=TwoWay}" AutoGenerateColumns="False" Margin="0,0,0,12">
@@ -63,7 +66,7 @@
                 </dg:DataGridTemplateColumn>
             </dg:DataGrid.Columns>
         </dg:DataGrid>
-        <Label Content="Observations" Grid.Column="2" Height="32" HorizontalAlignment="Left" Name="ObservationLabel" VerticalAlignment="Top" Width="380" FontSize="20" HorizontalContentAlignment="Center" Grid.ColumnSpan="7" />
+        <Label Style="{StaticResource StyleTitle}" Content="Observations" Grid.Column="2" Height="32" HorizontalAlignment="Left" Name="ObservationLabel" VerticalAlignment="Top" Width="380" FontSize="20" HorizontalContentAlignment="Center" Grid.ColumnSpan="7" />
         <Button Content="+" Grid.Column="2" Grid.Row="2" Height="32" HorizontalAlignment="Left" Name="AddObservation" VerticalAlignment="Top" Width="100" FontSize="20" Command="{Binding AddObservationCommand}" IsEnabled="{Binding UserRight}"/>
         <ListBox Grid.Column="2" Grid.Row="3" Height="475" HorizontalAlignment="Left" Name="ObservationList" VerticalAlignment="Top" Width="99" Grid.RowSpan="7" ItemsSource="{Binding SelectPatient.Observations}" ItemTemplate="{StaticResource dtObservationList}" SelectedItem="{Binding SelectObservation}"/>
         <ListBox Grid.Column="4" Grid.Row="2" Height="140" HorizontalAlignment="Left" Name="PictureList" VerticalAlignment="Top" Width="140" Grid.ColumnSpan="3" ItemsSource="{Binding SelectObservation.Pictures}" ItemTemplate="{StaticResource dtPictureList}" Grid.RowSpan="5" HorizontalContentAlignment="Left" />
