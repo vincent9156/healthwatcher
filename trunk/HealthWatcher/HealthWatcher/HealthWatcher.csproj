@@ -38,6 +38,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Windows.Forms" />
@@ -59,7 +60,6 @@
     </ApplicationDefinition>
     <Compile Include="Behaviors\WindowCloseBehaviour.cs" />
     <Compile Include="Converter\BoolConverter.cs" />
-    <Compile Include="Converter\DateConverter.cs" />
     <Compile Include="DataAccess\AccessObservation.cs" />
     <Compile Include="DataAccess\AccessPatient.cs" />
     <Compile Include="DataAccess\AccessUser.cs" />
@@ -231,21 +231,6 @@
     <WCFMetadataStorage Include="Service References\ServRefUser\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ServRefLive\ServiceLive.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ServRefLive\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ServRefLive\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ServRefLive\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\ServRefUser\ServiceUser.disco" />
   </ItemGroup>
   <ItemGroup>
@@ -286,6 +271,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ServRefObservation\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServRefLive\ServiceLive.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServRefLive\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServRefLive\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServRefLive\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
