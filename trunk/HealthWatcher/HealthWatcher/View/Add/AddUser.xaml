@@ -4,6 +4,9 @@
         xmlns:Behaviours="clr-namespace:HealthWatcher.Behaviors"
         Title="AddUser" Height="440" Width="300">
     <Window.Resources>
+        <Style x:Key="StyleTitle">
+            <Setter Property="Label.Foreground" Value="Blue" />
+        </Style>
         <Style x:Key="StyleMainGrid">
             <!--trigger pour fermer la fenêtre-->
             <Style.Triggers>
@@ -24,7 +27,7 @@
             <RowDefinition Height="263*" />
             <RowDefinition Height="67*" />
         </Grid.RowDefinitions>
-        <Label Content="Add User" Height="29" HorizontalAlignment="Center" Margin="39,12,39,0"  Name="labelAddUser" VerticalAlignment="Top" Width="200" HorizontalContentAlignment="Center" FontFamily="Pescadero" FontSize="18" Grid.ColumnSpan="2" />
+        <Label Style="{StaticResource StyleTitle}" Content="Add User" Height="29" HorizontalAlignment="Center" Margin="39,12,39,0"  Name="labelAddUser" VerticalAlignment="Top" Width="200" HorizontalContentAlignment="Center" FontFamily="Pescadero" FontSize="18" Grid.ColumnSpan="2" />
         <TextBlock Grid.Row="2" Height="23" HorizontalAlignment="Left" Margin="39,0,0,0" Name="textBlockLogin" Text="Login:" VerticalAlignment="Top" Width="100" />
         <TextBox Text="{Binding User.Login}" Grid.Column="1" Grid.Row="2" Height="23" HorizontalAlignment="Left" Name="textBoxLogin" VerticalAlignment="Top" Width="127" />
         <TextBlock Grid.Row="2" Height="23" HorizontalAlignment="Left" Margin="39,29,0,0" Name="textBlockPassword" Text="Password:" VerticalAlignment="Top" Width="100" />

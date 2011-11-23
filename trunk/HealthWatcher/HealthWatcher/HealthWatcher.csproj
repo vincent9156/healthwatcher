@@ -111,10 +111,6 @@
     <Compile Include="View\Users.xaml.cs">
       <DependentUpon>Users.xaml</DependentUpon>
     </Compile>
-    <Page Include="Resources\DictionaryGeometry.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\Add\AddObservation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

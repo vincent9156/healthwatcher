@@ -4,6 +4,9 @@
         xmlns:Behaviours="clr-namespace:HealthWatcher.Behaviors"
         Title="AddPatient" Height="300" Width="300">
     <Window.Resources>
+        <Style x:Key="StyleTitle">
+            <Setter Property="Label.Foreground" Value="Blue" />
+        </Style>
         <Style x:Key="StyleMainGrid">
             <!--trigger pour fermer la fenêtre-->
             <Style.Triggers>
@@ -23,7 +26,7 @@
             <ColumnDefinition Width="139*" />
             <ColumnDefinition Width="139*" />
         </Grid.ColumnDefinitions>
-        <Label Content="Add Patient"  Height="29" FontSize="18" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="52,12,80,0" Name="labelAddPatient" Width="146" Grid.ColumnSpan="2" />
+        <Label Style="{StaticResource StyleTitle}" Content="Add Patient"  Height="29" FontSize="18" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="52,12,80,0" Name="labelAddPatient" Width="146" Grid.ColumnSpan="2" />
         <TextBlock Grid.Row="2" Height="23" HorizontalAlignment="Left" Margin="39,0,0,0" Name="textBlockId" Text="Id:" VerticalAlignment="Top" Width="100" />
         <TextBox Text="{Binding Patient.Login, Mode=TwoWay}" Grid.Column="1" Grid.Row="2" Height="23" HorizontalAlignment="Left" Name="textBoxId" VerticalAlignment="Top" Width="125" />
         <TextBlock Grid.Row="2" Height="23" HorizontalAlignment="Left" Margin="39,29,0,0" Name="textBlockName" Text="Name:" VerticalAlignment="Top" Width="100" />

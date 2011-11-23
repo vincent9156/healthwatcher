@@ -4,6 +4,9 @@
         xmlns:Behaviours="clr-namespace:HealthWatcher.Behaviors"
         Title="AddObservation" Height="600" Width="400">
     <Window.Resources>
+        <Style x:Key="StyleTitle">
+            <Setter Property="Label.Foreground" Value="Blue" />
+        </Style>
         <DataTemplate x:Key="dtPictureList">
             <Image Source="{Binding Source}" Width="120" Height="120"/>
         </DataTemplate>
@@ -35,7 +38,7 @@
             <ColumnDefinition Width="59*" />
             <ColumnDefinition Width="13*" />
         </Grid.ColumnDefinitions>
-        <Label Content="Add Observation"  Height="29" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="3,12,45,0" Name="labelAddObservation" HorizontalContentAlignment="Center" Width="146" Grid.Column="1" Grid.ColumnSpan="2" />
+        <Label Style="{StaticResource StyleTitle}" Content="Add Observation"  Height="29" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="3,12,45,0" Name="labelAddObservation" HorizontalContentAlignment="Center" Width="146" Grid.Column="1" Grid.ColumnSpan="2" />
         <TextBlock HorizontalAlignment="Left" Margin="12,0,0,178" Name="textBlockDate" Text="Date:" Width="100" Grid.Row="2" />
         <DatePicker SelectedDate="{Binding Date}" Grid.Column="1" Height="25" HorizontalAlignment="Left" Name="datePicker" VerticalAlignment="Top" Width="127" Grid.Row="2" />
         <TextBlock Grid.Row="2" Height="23" HorizontalAlignment="Left" Margin="12,0,0,149" Name="textBlockComment" Text="Comment:" VerticalAlignment="Bottom" Width="100" />

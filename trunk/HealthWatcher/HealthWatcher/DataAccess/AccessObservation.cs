@@ -54,10 +54,12 @@ namespace HealthWatcher.DataAccess
             newObs.Weight = obs.Weight;
             newObs.Comment = obs.Comment;
             newObs.Date = obs.Date;
-            for (int i = 0; i < obs.Pictures.Count(); i++)
+            newObs.Pictures = new Byte[obs.Pictures.Count][];
+            for (int i = 0; i < obs.Pictures.Count; i++)
             {
                 newObs.Pictures[i] = BufferFromImage((BitmapImage) obs.Pictures[i].Source);
             }
+            newObs.Prescription = new string[obs.Prescription.Count];
             for (int i = 0; i < obs.Prescription.Count; i++)
             {
                 newObs.Prescription[i] = obs.Prescription[i];
