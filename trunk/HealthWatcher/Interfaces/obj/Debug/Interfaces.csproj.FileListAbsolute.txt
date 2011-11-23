@@ -1,0 +1,63 @@
+C:\Documents and Settings\i2118dp\Mes documents\Visual Studio 2010\Projects\Wcf-Medical\Interfaces\bin\Debug\Interfaces.dll
+C:\Documents and Settings\i2118dp\Mes documents\Visual Studio 2010\Projects\Wcf-Medical\Interfaces\bin\Debug\Interfaces.pdb
+C:\Documents and Settings\i2118dp\Mes documents\Visual Studio 2010\Projects\Wcf-Medical\Interfaces\bin\Debug\Dbo.dll
+C:\Documents and Settings\i2118dp\Mes documents\Visual Studio 2010\Projects\Wcf-Medical\Interfaces\bin\Debug\Dbo.pdb
+C:\Documents and Settings\i2118dp\Mes documents\Visual Studio 2010\Projects\Wcf-Medical\Interfaces\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\i2118dp\Mes documents\Visual Studio 2010\Projects\Wcf-Medical\Interfaces\obj\Debug\Interfaces.dll
+C:\Documents and Settings\i2118dp\Mes documents\Visual Studio 2010\Projects\Wcf-Medical\Interfaces\obj\Debug\Interfaces.pdb
+G:\EPITA\wpf\Wcf-Medical\Interfaces\obj\Debug\ResolveAssemblyReference.cache
+G:\EPITA\wpf\Wcf-Medical\Interfaces\obj\Debug\Interfaces.dll
+G:\EPITA\wpf\Wcf-Medical\Interfaces\obj\Debug\Interfaces.pdb
+G:\EPITA\wpf\Wcf-Medical\Interfaces\bin\Debug\Interfaces.dll
+G:\EPITA\wpf\Wcf-Medical\Interfaces\bin\Debug\Interfaces.pdb
+G:\EPITA\wpf\Wcf-Medical\Interfaces\bin\Debug\Dbo.dll
+G:\EPITA\wpf\Wcf-Medical\Interfaces\bin\Debug\Dbo.pdb
+M:\EPITA\wpf\Wcf-Medical\Interfaces\bin\Debug\Interfaces.dll
+M:\EPITA\wpf\Wcf-Medical\Interfaces\bin\Debug\Interfaces.pdb
+M:\EPITA\wpf\Wcf-Medical\Interfaces\bin\Debug\Dbo.dll
+M:\EPITA\wpf\Wcf-Medical\Interfaces\bin\Debug\Dbo.pdb
+M:\EPITA\wpf\Wcf-Medical\Interfaces\obj\Debug\ResolveAssemblyReference.cache
+M:\EPITA\wpf\Wcf-Medical\Interfaces\obj\Debug\Interfaces.dll
+M:\EPITA\wpf\Wcf-Medical\Interfaces\obj\Debug\Interfaces.pdb
+E:\PROJET\HealthWatcher\Interfaces\bin\Debug\Interfaces.dll
+E:\PROJET\HealthWatcher\Interfaces\bin\Debug\Interfaces.pdb
+E:\PROJET\HealthWatcher\Interfaces\bin\Debug\Dbo.dll
+E:\PROJET\HealthWatcher\Interfaces\bin\Debug\Dbo.pdb
+E:\PROJET\HealthWatcher\Interfaces\obj\Debug\ResolveAssemblyReference.cache
+E:\PROJET\HealthWatcher\Interfaces\obj\Debug\Interfaces.dll
+E:\PROJET\HealthWatcher\Interfaces\obj\Debug\Interfaces.pdb
+C:\Documents and Settings\Vic.VIC-C6BC88711E7\Mes documents\PROJET\HealthWatcher\Interfaces\bin\Debug\Interfaces.dll
+C:\Documents and Settings\Vic.VIC-C6BC88711E7\Mes documents\PROJET\HealthWatcher\Interfaces\bin\Debug\Interfaces.pdb
+C:\Documents and Settings\Vic.VIC-C6BC88711E7\Mes documents\PROJET\HealthWatcher\Interfaces\bin\Debug\Dbo.dll
+C:\Documents and Settings\Vic.VIC-C6BC88711E7\Mes documents\PROJET\HealthWatcher\Interfaces\bin\Debug\Dbo.pdb
+C:\Documents and Settings\Vic.VIC-C6BC88711E7\Mes documents\PROJET\HealthWatcher\Interfaces\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Vic.VIC-C6BC88711E7\Mes documents\PROJET\HealthWatcher\Interfaces\obj\Debug\Interfaces.dll
+C:\Documents and Settings\Vic.VIC-C6BC88711E7\Mes documents\PROJET\HealthWatcher\Interfaces\obj\Debug\Interfaces.pdb
+E:\PROJET\WPF\healthwatcher\HealthWatcher\Interfaces\bin\Debug\Interfaces.dll
+E:\PROJET\WPF\healthwatcher\HealthWatcher\Interfaces\bin\Debug\Interfaces.pdb
+E:\PROJET\WPF\healthwatcher\HealthWatcher\Interfaces\bin\Debug\Dbo.dll
+E:\PROJET\WPF\healthwatcher\HealthWatcher\Interfaces\bin\Debug\Dbo.pdb
+E:\PROJET\WPF\healthwatcher\HealthWatcher\Interfaces\obj\Debug\ResolveAssemblyReference.cache
+E:\PROJET\WPF\healthwatcher\HealthWatcher\Interfaces\obj\Debug\Interfaces.dll
+E:\PROJET\WPF\healthwatcher\HealthWatcher\Interfaces\obj\Debug\Interfaces.pdb
+H:\healthwatcher\HealthWatcher\Interfaces\bin\Debug\Interfaces.dll
+H:\healthwatcher\HealthWatcher\Interfaces\bin\Debug\Interfaces.pdb
+H:\healthwatcher\HealthWatcher\Interfaces\bin\Debug\Dbo.dll
+H:\healthwatcher\HealthWatcher\Interfaces\bin\Debug\Dbo.pdb
+H:\healthwatcher\HealthWatcher\Interfaces\obj\Debug\ResolveAssemblyReference.cache
+H:\healthwatcher\HealthWatcher\Interfaces\obj\Debug\Interfaces.dll
+H:\healthwatcher\HealthWatcher\Interfaces\obj\Debug\Interfaces.pdb
+E:\healthwatcher\HealthWatcher\Interfaces\bin\Debug\Interfaces.dll
+E:\healthwatcher\HealthWatcher\Interfaces\bin\Debug\Interfaces.pdb
+E:\healthwatcher\HealthWatcher\Interfaces\bin\Debug\Dbo.dll
+E:\healthwatcher\HealthWatcher\Interfaces\bin\Debug\Dbo.pdb
+E:\healthwatcher\HealthWatcher\Interfaces\obj\Debug\ResolveAssemblyReference.cache
+E:\healthwatcher\HealthWatcher\Interfaces\obj\Debug\Interfaces.dll
+E:\healthwatcher\HealthWatcher\Interfaces\obj\Debug\Interfaces.pdb
+H:\hwBIS\HealthWatcher\Interfaces\bin\Debug\Interfaces.dll
+H:\hwBIS\HealthWatcher\Interfaces\bin\Debug\Interfaces.pdb
+H:\hwBIS\HealthWatcher\Interfaces\bin\Debug\Dbo.dll
+H:\hwBIS\HealthWatcher\Interfaces\bin\Debug\Dbo.pdb
+H:\hwBIS\HealthWatcher\Interfaces\obj\Debug\ResolveAssemblyReference.cache
+H:\hwBIS\HealthWatcher\Interfaces\obj\Debug\Interfaces.dll
+H:\hwBIS\HealthWatcher\Interfaces\obj\Debug\Interfaces.pdb
