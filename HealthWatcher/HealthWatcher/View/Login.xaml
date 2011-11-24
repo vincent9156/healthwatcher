@@ -4,6 +4,13 @@
         Title="Login" Width="450" Height="350" ResizeMode="NoResize"
         xmlns:Behaviours="clr-namespace:HealthWatcher.Behaviors">
     <Window.Resources>
+        <Storyboard x:Key="sb">
+            <StringAnimationUsingKeyFrames Storyboard.TargetName="Title" Storyboard.TargetProperty="(Label.Content)" RepeatBehavior="Forever">
+                <DiscreteStringKeyFrame Value="HealthWatcher" KeyTime="0:0:0" />
+                <DiscreteStringKeyFrame Value="Watch the patients!" KeyTime="0:0:5" />
+                <DiscreteStringKeyFrame Value="HealthWatcher" KeyTime="0:0:10" />
+            </StringAnimationUsingKeyFrames> 
+        </Storyboard>
         <Style x:Key="StyleTitle">
             <Setter Property="Label.Foreground" Value="Blue" />
         </Style>
@@ -17,12 +24,20 @@
         </Style>
     </Window.Resources>
     <Grid x:Name="LoginWindow" Background="White" Width="400" Height="300" Style="{StaticResource StyleMainGrid}" >
-        <Label Style="{StaticResource StyleTitle}" Content="HeathWatcher" Height="42.4" VerticalAlignment="Top" Margin="85,36.8,110,0"  HorizontalContentAlignment="Center" FontFamily="Pescadero" FontSize="26" />
+        <Label Name="Title" Style="{StaticResource StyleTitle}" Content="HeathWatcher" Height="42.4" VerticalAlignment="Top" Margin="12,36.8,12,0"  HorizontalContentAlignment="Center" FontFamily="Pescadero" FontSize="26" >
+            <Label.Triggers>
+                <EventTrigger RoutedEvent="Label.Loaded">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard Storyboard="{StaticResource sb}"/>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </Label.Triggers>
+        </Label>
         <TextBlock Name="LoginTextBlock" HorizontalAlignment="Left" Margin="84.6,129.6,0,0" TextWrapping="Wrap" Text="Login :" VerticalAlignment="Top" Width="67.043" Height="22"/>
         <TextBox Name="LoginTextBox" Text="{Binding Password, Mode=TwoWay}" Margin="155.643,0,110,148.4" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="22"/>
         <TextBlock Name="PasswordTextBlock" HorizontalAlignment="Left" Margin="84.6,173.8,0,104.24" TextWrapping="Wrap" Text="Password :" Width="67.043" Height="22"/>
         <TextBox Name="PasswordTextBox" ToolTip="Password" Text="{Binding Login, Mode=TwoWay}" Margin="155.643,173.8,110.023,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="22" />
-        <Button Content="Submit" Margin="156,0,169,58" VerticalAlignment="Bottom" Command="{Binding LoginCommand}" />
+        <Button Name="ButtonSubmit" Content="Submit" Margin="156,0,169,58" VerticalAlignment="Bottom" Command="{Binding LoginCommand}" />
         <TextBlock Foreground="Red" Text="{Binding LoginFail}" Height="28" HorizontalAlignment="Left" Margin="85,96,0,0" Name="TextBlockLoginFail" VerticalAlignment="Top" Width="205" />
     </Grid>
 </Window>
